@@ -1,3 +1,5 @@
 [2015-11-07 11:30:12] START
 [2015-11-07 11:35:16] EDIT LanguageExchange/views/default/index.html: -37
 [2015-11-07 11:35:40] EDIT LanguageExchange/views/default/index.html: -1
+[2015-11-12 14:12:38] CREATE tables.py: 0
+[2015-11-12 14:59:22] EDIT LanguageExchange/models/tables.py: 12
