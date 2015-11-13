@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>Select languages</h1>
+
+<h2>
+    <div>
+        Fluent Languages:
+    </div>
+</h2>
+
+{{=BEAUTIFY(response._vars)}}

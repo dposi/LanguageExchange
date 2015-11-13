@@ -9,6 +9,6 @@ db.define_table('userinfo',
 db.define_table('messages',
                 Field('userfrom', 'reference userinfo'),
                 Field('userto', 'reference userinfo'),
-                Field('message'),
-                Field('time', 'datetime', default = datetime.utcnow())
+                Field('msg'),
+                Field('msg_time', 'datetime', default = datetime.utcnow())
                 )

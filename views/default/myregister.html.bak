@@ -1,0 +1,14 @@
+<!-- Customized registration page-->
+
+{{extend 'layout.html'}}
+
+<h1>Sign Up</h1>
+
+{{=form.custom.begin}}
+
+First Name: <div>{{=form.custom.widget.first_name}}</div>
+Last Name: <div>{{=form.custom.widget.last_name}}</div>
+Email: <div>{{=form.custom.widget.email}}</div>
+Password: <div>{{=form.custom.widget.password}}</div>
+{{=form.custom.submit}}
+{{=form.custom.end}}

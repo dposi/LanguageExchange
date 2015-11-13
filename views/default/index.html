@@ -1,12 +1,16 @@
 {{extend 'layout.html'}}
+<!-- Header w/ title and logo -->
+<header class="container-fluid background">
+  <div class="jumbotron text-center">
+  {{if response.title:}}
+  <h1>Language Exchange
+    <small>{{=response.subtitle or ''}}</small></h1>
+  {{pass}}
+  </div>
+</header>
 
-{{block header}}
-    <header class="container-fluid background">
-      <div class="jumbotron text-center">
-        {{if response.title:}}
-        <h1>{{=response.title}}
-          <small>{{=response.subtitle or ''}}</small></h1>
-        {{pass}}
-      </div>
-    </header>
-{{end}}
+<!-- Sign Up and Log In Buttons -->
+  <div align="right" id="main_login">
+  {{=A('Sign Up', _class='btn btn-warning', _href=URL('default', 'cust_register'))}}
+  {{=A('Sign In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
+  </div>
