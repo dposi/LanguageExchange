@@ -70,3 +70,5 @@ CREATE TABLE messages(
     msg_time TIMESTAMP
 );
 success!
+success!
+success!

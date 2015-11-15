@@ -11,12 +11,36 @@
 def index():
     return dict()
 
+def descr():
+    return dict()
+
+@auth.requires_login()
 def reg_lang():
     """
     where user selects language preferences
     """
     return dict()
 
+@auth.requires_login()
+def home():
+    """
+    homepage
+    """
+    return dict()
+
+@auth.requires_login()
+def chat_win():
+    """
+    chat window
+    """
+    return dict()
+
+@auth.requires_login()
+def settings():
+    """
+    user can change saved settings
+    """
+    return dict()
 
 def user():
     """
@@ -36,7 +60,7 @@ def user():
     """
     return dict(form=auth())
 
-def myregister():
+def cust_register():
     """
     customized registration
     """
