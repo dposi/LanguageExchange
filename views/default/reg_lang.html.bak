@@ -7,10 +7,4 @@
     </div>
 </h2>
 
-<h2>
-    <div>
-        Languages To Learn:
-    </div>
-</h2>
-
 {{=BEAUTIFY(response._vars)}}

@@ -1,4 +1,0 @@
-{{extend 'layout.html'}}
-<h1>Chat Window</h1>
-
-{{=A('Back Home', _class='btn btn-warning', _href=URL('default', 'home'))}}
