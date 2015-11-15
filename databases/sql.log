@@ -53,3 +53,20 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
+timestamp: 2015-11-14T15:27:40.274000
+CREATE TABLE userinfo(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    screenname CHAR(512),
+    fluent TEXT,
+    learn TEXT
+);
+success!
+timestamp: 2015-11-14T15:27:40.292000
+CREATE TABLE messages(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userfrom INTEGER REFERENCES userinfo (id) ON DELETE CASCADE  ,
+    userto INTEGER REFERENCES userinfo (id) ON DELETE CASCADE  ,
+    msg CHAR(512),
+    msg_time TIMESTAMP
+);
+success!

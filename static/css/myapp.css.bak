@@ -1,0 +1,7 @@
+div.signup {
+    text-align: center;
+}
+
+div.login {
+    text-align: center;
+}

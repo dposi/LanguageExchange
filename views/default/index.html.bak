@@ -9,8 +9,14 @@
   </div>
 </header>
 
+<div align="center">
+    <a href="/default/descr"><u>What is LangEx?</u></a>
+</div>
+
 <!-- Sign Up and Log In Buttons -->
-  <div align="right" id="main_login">
-  {{=A('Sign Up', _class='btn btn-warning', _href=URL('default', 'myregister'))}}
-  {{=A('Sign In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
+  <div class="signin">
+    {{=A('Sign Up', _class='btn btn-warning', _href=URL('default', 'cust_register'))}}
+  </div>
+  <div class="signin">
+    {{=A('Log In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
   </div>
