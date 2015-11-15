@@ -96,3 +96,16 @@
 [2015-11-14 16:29:08] EDIT LanguageExchange/views/default/index.html: 0
 [2015-11-14 16:29:20] EDIT LanguageExchange/static/css/myapp.css: -2
 [2015-11-14 16:31:27] EDIT LanguageExchange/views/default/index.html: 0
+[2015-11-14 16:58:15] EDIT LanguageExchange/models/db.py: 1
+[2015-11-14 16:59:40] DELETE LanguageExchange/views/default/index.html.1: -19
+[2015-11-14 17:00:55] EDIT LanguageExchange/controllers/default.py: 15
+[2015-11-14 17:02:03] EDIT LanguageExchange/controllers/default.py: 5
+[2015-11-14 17:02:09] EDIT LanguageExchange/controllers/default.py: 0
+[2015-11-14 17:02:18] CREATE default/desrc.html: 0
+[2015-11-14 17:02:47] CREATE default/home.html: 0
+[2015-11-14 17:02:52] CREATE default/settings.html: 0
+[2015-11-14 17:02:58] CREATE default/chat_win.html: 0
+[2015-11-14 17:03:00] EDIT LanguageExchange/views/default/chat_win.html: 0
+[2015-11-14 17:03:36] DELETE LanguageExchange/views/default/desrc.html: -3
+[2015-11-14 17:03:48] CREATE default/descr.html: 0
+[2015-11-14 17:05:16] EDIT LanguageExchange/views/default/descr.html: 0

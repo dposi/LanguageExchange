@@ -57,11 +57,6 @@ auth = Auth(db)
 service = Service()
 plugins = PluginManager()
 
-#customize auth
-auth.settings.extra_fields['auth_user']= [
-  Field('fluent_languages'),
-  Field('learning_languages')]
-
 ## create all tables needed by auth if not custom tables
 auth.define_tables(username=False, signature=False)
 

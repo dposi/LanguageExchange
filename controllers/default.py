@@ -11,12 +11,35 @@
 def index():
     return dict()
 
+def descr():
+    """
+    description of website
+    """
+    return dict()
+
 def reg_lang():
     """
     where user selects language preferences
     """
     return dict()
 
+def home():
+    """
+    homepage
+    """
+    return dict()
+
+def settings():
+    """
+    where user can change settings
+    """
+    return dict()
+
+def chat_win():
+    """
+    chat window
+    """
+    return dict()
 
 def user():
     """
