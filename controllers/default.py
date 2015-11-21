@@ -104,10 +104,9 @@ def cust_register():
 @auth.requires_login()
 def debug_user():
     u = db.auth_user(auth.user_id)
-    f = u.learning
-    if f is None:
-        f = 'f is None'
-    return dict(f=f)
+    f = u.fluent
+    l = u.learning
+    return dict(f=f, l=l)
 
 
 @cache.action()

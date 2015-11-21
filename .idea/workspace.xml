@@ -2,73 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9eb66e5-465f-4533-9053-c1b57a454276" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0dc/1cb/127.0.0.1-05c2fdfa-9933-4798-9256-f08aaa604926" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/078/062/127.0.0.1-083f851e-8668-4a08-8637-8f77b012bc61" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/076/0bd/127.0.0.1-0b892427-2c76-4a62-ab24-d5de55501802" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/18f/1a0/127.0.0.1-109bb39b-295a-4e81-8ca5-3c0e72f27a76" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/075/0f2/127.0.0.1-12e7b958-3ca0-401d-b164-150bbd886df2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0f6/01a/127.0.0.1-22a6ce15-1ad9-41bb-a6a6-1264d5d986da" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/05e/1b7/127.0.0.1-3314d411-0d5c-474f-b852-e4c91a8eb310" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/148/1be/127.0.0.1-34589117-f720-4bf9-8a2b-3c415b525ec7" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/1a5/051/127.0.0.1-3c9a0ac0-94f6-45ed-bcca-36e752fb39bf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0df/0f0/127.0.0.1-40ae2d27-f82b-443d-bc3b-af446497b6c3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/08d/1c0/127.0.0.1-41ae741c-d2ae-4bda-93b2-7a986f92f6e1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/162/1b7/127.0.0.1-4264573e-f296-472e-b405-9f0786b1f4b6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/04c/01b/127.0.0.1-465068eb-6a75-45e4-9257-74487ea462a8" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/10a/026/127.0.0.1-487692bb-ee2f-43b4-a299-1adca2abf874" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0de/18f/127.0.0.1-4cbe0944-b82e-4d4f-8141-bb910c163b33" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0f3/023/127.0.0.1-4cf6e991-5d7d-43e9-b14d-d24a710011ee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/179/025/127.0.0.1-56c97a38-63b9-4af4-b369-acd87ff722f0" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/09f/1fb/127.0.0.1-577ccf7f-9d2e-42fc-a8f4-68f25bcade9b" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/033/0f2/127.0.0.1-5ce82fe1-c33d-48b6-8759-f328d7520bb4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0f7/116/127.0.0.1-64f0ba75-905f-4896-a48b-090eb5ce64a5" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/089/148/127.0.0.1-65c19dce-8aad-4d73-a2ec-3c70fc0797d3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/077/11b/127.0.0.1-6f382db5-6386-40b3-a40f-502b75faf6b9" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/05d/089/127.0.0.1-7537db6c-7a21-4511-98e1-2b139f5af450" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/163/1ea/127.0.0.1-781ade5e-ea47-46cf-8de6-0ec42d691ba6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/174/193/127.0.0.1-8440e073-f7ed-4c52-8cca-c466157a3d03" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0a3/1ec/127.0.0.1-91e1d92f-2b1f-4153-bfbe-0a6f813e052e" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/17a/1ef/127.0.0.1-9669f778-7570-48d3-bc3a-3bbad8f1711e" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0fb/0f3/127.0.0.1-a2069b94-adc2-4895-9c7a-eb9e82d3fb5d" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/04a/0c9/127.0.0.1-a8153c30-b93e-470f-925e-b29f27c77883" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/1a0/1eb/127.0.0.1-ad1c6d9e-d702-45ff-b6db-bbca08a0171e" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/10b/1cb/127.0.0.1-b6dd5195-0226-4b28-aea9-0dd55365ba6c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/194/151/127.0.0.1-b9d8acaf-cf22-4ec3-81a4-374a27f86def" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/092/1c4/127.0.0.1-bc225c4c-cd56-4d78-865f-d86fba79284d" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/00b/094/127.0.0.1-ca467f3f-19a3-449e-aa6f-eb301152053f" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/07c/0e9/127.0.0.1-ceae5b15-84f4-4efc-871f-35a95a72a824" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0f8/0eb/127.0.0.1-cf4550fa-9324-4e00-b340-e1f7b6e6ec08" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/14c/0ef/127.0.0.1-d087f2a0-a2a3-477f-951f-821848633bd9" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0e4/1ee/127.0.0.1-d168d638-57b1-46a8-9b83-7ec3c1cf96b3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/10e/0cc/127.0.0.1-d9cba881-f7e9-4103-89c4-877e148477df" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0e2/1f5/127.0.0.1-e3972662-9efd-42ab-8fef-8f2961e33a1d" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/126/0e8/127.0.0.1-f8dae83a-53ce-4725-9512-46ec9ac7751a" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/LanguageExchange.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Web2Py_Library.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_languages.table" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\chat_win.html.bak" afterPath="" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\cust_register.html.bak" afterPath="" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\descr.html.bak" afterPath="" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\index.html.bak" afterPath="" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\myregister.html.bak" afterPath="" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\reg_lang.html.bak" afterPath="" />
-      <change type="DELETED" beforePath="D:\web2py\applications\LanguageExchange\views\default\user.html.bak" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/05e/1b7/127.0.0.1-3314d411-0d5c-474f-b852-e4c91a8eb310" afterPath="$PROJECT_DIR$/sessions/05e/1b7/127.0.0.1-3314d411-0d5c-474f-b852-e4c91a8eb310" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage.sqlite" afterPath="$PROJECT_DIR$/databases/storage.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_auth_user.table" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_auth_user.table" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_messages.table" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_messages.table" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/db.py" afterPath="$PROJECT_DIR$/models/db.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/debug_user.html" afterPath="$PROJECT_DIR$/views/default/debug_user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/default.py" afterPath="$PROJECT_DIR$/controllers/default.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/index.html" afterPath="$PROJECT_DIR$/views/default/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/myapp.css" afterPath="$PROJECT_DIR$/static/css/myapp.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/reg_lang.html" afterPath="$PROJECT_DIR$/views/default/reg_lang.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/sql.log" afterPath="$PROJECT_DIR$/databases/sql.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/tables.py" afterPath="$PROJECT_DIR$/models/tables.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LanguageExchange.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,7 +21,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/LanguageExchange$LanguageExchange.coverage" NAME="LanguageExchange Coverage Results" MODIFIED="1448094870626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../.." />
+    <SUITE FILE_PATH="coverage/LanguageExchange$LanguageExchange.coverage" NAME="LanguageExchange Coverage Results" MODIFIED="1448106825294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../.." />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -96,7 +35,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
+            <state vertical-scroll-proportion="0.0">
               <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
               <folding />
             </state>
@@ -106,8 +45,8 @@
       <file leaf-file-name="default.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/default.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4637224">
-              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+            <state vertical-scroll-proportion="1.099369">
+              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -116,7 +55,7 @@
       <file leaf-file-name="init_user.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/init_user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.576923">
+            <state vertical-scroll-proportion="0.0">
               <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
@@ -126,8 +65,8 @@
       <file leaf-file-name="debug_user.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/debug_user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -156,7 +95,7 @@
       <file leaf-file-name="reg_lang.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/reg_lang.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
               <folding />
             </state>
@@ -166,11 +105,9 @@
       <file leaf-file-name="reg_lang2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/reg_lang2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-              <folding>
-                <marker date="1448099831385" expanded="true" signature="86:107" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,8 +144,8 @@
         <option value="$PROJECT_DIR$/views/default/reg_lang.html" />
         <option value="$PROJECT_DIR$/views/default/init_user.html" />
         <option value="$PROJECT_DIR$/views/default/index.html" />
-        <option value="$PROJECT_DIR$/views/default/debug_user.html" />
         <option value="$PROJECT_DIR$/controllers/default.py" />
+        <option value="$PROJECT_DIR$/views/default/debug_user.html" />
       </list>
     </option>
   </component>
@@ -248,6 +185,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -361,7 +299,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,7 +536,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -638,6 +575,78 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/init_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/debug_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="59" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/reg_lang.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/reg_lang2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/myapp.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -736,7 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19572368">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -744,9 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2809918">
           <caret line="308" column="42" selection-start-line="308" selection-start-column="42" selection-end-line="308" selection-end-column="42" />
-          <folding>
-            <marker date="1447721782124" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -760,11 +765,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/reg_lang2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding>
-            <marker date="1448099831385" expanded="true" signature="86:107" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -778,7 +781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/reg_lang.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
@@ -786,16 +789,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/init_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
+        <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/debug_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -810,16 +805,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154">
+        <state vertical-scroll-proportion="0.0">
           <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/debug_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/default.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4637224">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        <state vertical-scroll-proportion="1.099369">
+          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding />
         </state>
       </provider>
