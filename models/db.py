@@ -57,6 +57,25 @@ auth = Auth(db)
 service = Service()
 plugins = PluginManager()
 
+db.define_table('languages',
+                Field('owner_id', 'integer', readable=False, writable=False),
+                Field('fluent', 'boolean', readable=False, writable=False),
+                Field('Arabic', 'boolean', default=False),
+                Field('Chinese', 'boolean', default=False),
+                Field('Danish', 'boolean', default=False),
+                Field('English', 'boolean', default=False),
+                Field('French', 'boolean', default=False),
+                Field('German', 'boolean', default=False),
+                Field('Italian', 'boolean', default=False),
+                Field('Japanese', 'boolean', default=False)
+                )
+
+auth.settings.extra_fields['auth_user']=[
+    Field('screenname', requires=IS_NOT_EMPTY()),
+    Field('fluent', 'reference languages', readable=False, writable=False),
+    Field('learning', 'reference languages', readable=False, writable=False)
+]
+
 ## create all tables needed by auth if not custom tables
 auth.define_tables(username=False, signature=False)
 

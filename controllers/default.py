@@ -17,11 +17,41 @@ def descr():
     """
     return dict()
 
+
+@auth.requires_login()
+def init_user():
+    db.languages.insert(owner_id = auth.user_id, fluent = True)
+    db.languages.insert(owner_id = auth.user_id, fluent = False)
+    for record in db(db.languages.owner_id == auth.user_id).select():
+        if record.fluent == True:
+            db(db.auth_user.id == auth.user_id).update(fluent = record)
+        else:
+            db(db.auth_user.id == auth.user_id).update(learning = record)
+    redirect(URL('default', 'reg_lang'))
+    return dict()
+
+@auth.requires_login()
 def reg_lang():
     """
     where user selects language preferences
     """
-    return dict()
+    record = db.auth_user(auth.user_id).fluent
+    form = SQLFORM(db.languages, record, formstyle='table3cols')
+    if form.process().accepted:
+        redirect(URL('default', 'reg_lang2'))
+    return dict(form=form)
+
+def reg_lang2():
+    """
+    where user selects language preferences
+    """
+    record = db.auth_user(auth.user_id).learning
+    form = SQLFORM(db.languages, record, formstyle='table3cols')
+    if form.process().accepted:
+        redirect(URL('default', 'index'))
+    return dict(form=form)
+
+
 
 def home():
     """
@@ -69,6 +99,15 @@ def cust_register():
     else:
         response.flash = 'Fill out details'
     return dict(form=form)
+
+
+@auth.requires_login()
+def debug_user():
+    u = db.auth_user(auth.user_id)
+    f = u.learning
+    if f is None:
+        f = 'f is None'
+    return dict(f=f)
 
 
 @cache.action()

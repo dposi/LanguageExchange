@@ -1,16 +1,5 @@
 {{extend 'layout.html'}}
-<h1>Select languages</h1>
-
-<h2>
-    <div>
-        Fluent Languages:
-    </div>
-</h2>
-
-<h2>
-    <div>
-        Languages To Learn:
-    </div>
-</h2>
-
-{{=BEAUTIFY(response._vars)}}
+<h1>Select fluent languages</h1>
+<div class="language_form">
+    {{=form}}
+</div>

@@ -49,12 +49,12 @@ I00
 sg6
 I3
 sg7
-S'INTEGER REFERENCES userinfo (id) ON DELETE CASCADE  '
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  '
 p18
 sg9
 I00
 sg10
-S'reference userinfo'
+S'reference auth_user'
 p19
 ssS'id'
 p20
@@ -71,10 +71,11 @@ p22
 sg9
 I00
 sg10
-g20
-ssS'userfrom'
+S'id'
 p23
-(dp24
+ssS'userfrom'
+p24
+(dp25
 g4
 I512
 sg5
@@ -82,8 +83,8 @@ I00
 sg6
 I2
 sg7
-S'INTEGER REFERENCES userinfo (id) ON DELETE CASCADE  '
-p25
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  '
+p26
 sg9
 I00
 sg10
