@@ -123,20 +123,20 @@ p30
 (dp31
 S'sortable'
 p32
-I2
+L2L
 sS'sql'
 p33
 S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  '
 p34
 sS'length'
 p35
-I512
+L512L
 sS'notnull'
 p36
-I00
+L0L
 sS'unique'
 p37
-I00
+L0L
 sS'type'
 p38
 S'reference auth_user'

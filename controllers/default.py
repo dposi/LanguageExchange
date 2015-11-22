@@ -9,6 +9,8 @@
 #########################################################################
 
 def index():
+    if auth.user_id is not None:
+        redirect(URL('default', 'home'))
     return dict()
 
 def descr():
@@ -38,9 +40,13 @@ def reg_lang():
     record = db.auth_user(auth.user_id).fluent
     form = SQLFORM(db.languages, record, formstyle='table3cols')
     if form.process().accepted:
-        redirect(URL('default', 'reg_lang2'))
+        if request.args(0) == 'settings':
+            redirect(URL('default', 'settings'))
+        else:
+            redirect(URL('default', 'reg_lang2'))
     return dict(form=form)
 
+@auth.requires_login()
 def reg_lang2():
     """
     where user selects language preferences
@@ -48,7 +54,10 @@ def reg_lang2():
     record = db.auth_user(auth.user_id).learning
     form = SQLFORM(db.languages, record, formstyle='table3cols')
     if form.process().accepted:
-        redirect(URL('default', 'index'))
+        if request.args(0) == 'settings':
+            redirect(URL('default', 'settings'))
+        else:
+            redirect(URL('default', 'index'))
     return dict(form=form)
 
 
