@@ -1,19 +1,21 @@
 {{extend 'layout.html'}}
-<h1 align= center>What Is LangEx?</h1>
+<div class="headers">
+<h1 id="descr_h1" align= center>What is LangEx?</h1>
+</div>
 
-<div id='descr_intro' align=center>
+<hr>
+    
+<body id="descr_body" align=center>
+<div id='descr_intro'>
     Intro Description
 </div>
-
-<div id='descr_pic' align=center>
+<div id='descr_pic'>
     [pic]
 </div>
-
-<div id='descr_more' align=center>
+<div id='descr_more'>
     More description about features
 </div>
-
-<div id='descr_langlist' data-columns=2>
+<div id='descr_langlist'>
     <ul>
         <li>English</li>
         <li>Spanish</li>
@@ -21,8 +23,8 @@
         <li>more to come!</li>
     </ul>
 </div>
-
-<div id='reg_button' align=center>
-    {{=A('Get Started!', _class='btn btn-warning', _href=URL('default', 'user', args=['register'],
+<div id='user_button'>
+    {{=A('Get Started!',  _class='btn btn-default btn-md round', _href=URL('default', 'user', args=['register'],
         vars=dict(_next=URL('default', 'init_user'))))}}
 </div>
+</body>

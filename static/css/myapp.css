@@ -1,7 +1,91 @@
-div.signin {
-    text-align: center;
-    margin: 10px;
+a, a:active {
+    color: #88b851;
+}
+
+a:hover {
+    color: #dbe9ca;
+}
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: #FBFEFD;
+}
+
+h1 {
+    color: #FFFFFF;
+}
+
+
+div.headers {
+    background-color:#88b851;
+    height:125px;
+    width:100%;
+}
+
+div.logo_front {
+    margin-left:auto;
+    margin-right:auto;
+    height:400px;
+    width:500px;
+    background-color:#88b851;
+    border-radius:100px 100px 100px 100px;
+}
+
+#logo_txt {
+    padding-top:5em;
+    font-weight:600;
+    margin-top:30;
+    color:#FFFFFF;
+}
+
+#descr_h1{
+    padding-top:1.25em;
+}
+
+#descr_link{
+    color:#88b851;
+    font-size:large;
+    margin:2em;
+}
+
+#descr_pic{
+    margin-left:auto;
+    margin-right:auto;
+    width:50%;
+    height:50%;
+}
+
+#descr_langlist{
+    width:200px;
+    margin:0 auto;
+    text-align:left;
+}
+
+div.user_btn {
+    margin: 15px;
 }
 
 div.language_form {
+}
+
+/* button customization */
+.btn{
+    border: 0 none;
+    font-weight: 350;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    text-transform: uppercase;
+}
+
+.btn-default{
+    background: #618637;
+    color: #ffffff;
+}
+
+.btn-default:hover{
+    background: #adce87;
+}
+
+.round {
+  border-radius: 20px;
 }

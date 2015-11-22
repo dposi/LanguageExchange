@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 <h1>HomeDash</h1>
-{{=BEAUTIFY(response._vars)}}
+
 
 <div class="match_users">
     Users matched:
@@ -8,10 +8,10 @@
 
 
 <hr>
-<div class="settings_btn">
+<div class="user_btn">
   {{=A('Change Settings', _class='btn btn-success', _href=URL('default', 'settings'))}}
 </div>
 
-<div class="logout_btn">
+<div class="user_btn">
   {{=A('Logout', _class='btn btn-danger', _href=URL('default', 'user', args='logout'))}}
 </div>

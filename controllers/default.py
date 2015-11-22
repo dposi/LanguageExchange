@@ -60,20 +60,21 @@ def reg_lang2():
             redirect(URL('default', 'index'))
     return dict(form=form)
 
-
-
+@auth.requires_login()
 def home():
     """
     homepage
     """
     return dict()
 
+@auth.requires_login()
 def settings():
     """
     where user can change settings
     """
     return dict()
 
+@auth.requires_login()
 def chat_win():
     """
     chat window

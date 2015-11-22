@@ -1,23 +1,22 @@
 {{extend 'layout.html'}}
-<!-- Header w/ title and logo -->
-<header class="container-fluid background">
-  <div class="jumbotron text-center">
-  {{if response.title:}}
-  <h1>Language Exchange
-    <small>{{=response.subtitle or ''}}</small></h1>
-  {{pass}}
-  </div>
-</header>
 
-<div align="center">
-    <a href="{{=URL('default', 'descr')}}"><u>What is LangEx?</u></a>
+
+<div class="logo_front" align="center">
+  <h1 id="logo_txt">Language Exchange</h1>
 </div>
 
+
+<body id= "index_body" align="center">
+  <div id="descr_link">
+    <a href="{{=URL('default', 'descr')}}"><u>What is LangEx?</u></a>
+  </div>
+
 <!-- Sign Up and Log In Buttons -->
-  <div class="signin">
-    {{=A('Sign Up', _class='btn btn-warning', _href=URL('default', 'user', args=['register'],
+  <div class="user_btn">
+    {{=A('Sign Up', _class='btn btn-default btn-md round', _href=URL('default', 'user', args=['register'],
         vars=dict(_next=URL('default', 'init_user'))))}}
   </div>
-  <div class="signin">
-    {{=A('Log In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
+  <div class="user_btn">
+    {{=A('Log In', _class='btn btn-default btn-md round', _href=URL('default', 'user', args=['login']))}}
   </div>
+</body>
