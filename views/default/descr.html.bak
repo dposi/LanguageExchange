@@ -13,7 +13,7 @@
     More description about features
 </div>
 
-<div id='descr_langlist' data-columns=2>
+<div id='descr_langlist'>
     <ul>
         <li>English</li>
         <li>Spanish</li>

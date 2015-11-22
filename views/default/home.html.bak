@@ -3,7 +3,7 @@
 {{=BEAUTIFY(response._vars)}}
 
 <div class="match_users">
-    Users matched:
+    Users matched
 </div>
 
 
