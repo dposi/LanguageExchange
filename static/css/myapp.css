@@ -27,15 +27,16 @@ div.logo_front {
     margin-right:auto;
     height:400px;
     width:500px;
-    background-color:#88b851;
+    background-color:#79bf4a;
     border-radius:100px 100px 100px 100px;
 }
 
-#logo_txt {
-    padding-top:5em;
-    font-weight:600;
-    margin-top:30;
-    color:#FFFFFF;
+#logo {
+    padding-top:1.55em;
+    height: auto;
+    width: auto;
+    max-width: 425px;
+    max-height: 425px;
 }
 
 #descr_h1{
