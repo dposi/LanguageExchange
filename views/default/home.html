@@ -1,5 +1,7 @@
 {{extend 'layout.html'}}
-<h1>HomeDash</h1>
+<div class="headers">
+   <h1>HomeDash</h1>
+</div>
 
 
 <div class="match_users">
@@ -9,9 +11,9 @@
 
 <hr>
 <div class="user_btn">
-  {{=A('Change Settings', _class='btn btn-success', _href=URL('default', 'settings'))}}
+  {{=A('Change Settings', _class='btn btn-default btn-md round', _href=URL('default', 'settings'))}}
 </div>
 
 <div class="user_btn">
-  {{=A('Logout', _class='btn btn-danger', _href=URL('default', 'user', args='logout'))}}
+  {{=A('Logout', _class='btn btn-default btn-md round', _href=URL('default', 'user', args='logout'))}}
 </div>

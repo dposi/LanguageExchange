@@ -12,6 +12,8 @@ body {
 }
 
 h1 {
+    text-align: center;
+    padding-top:1.25em;
     color: #FFFFFF;
 }
 
@@ -39,14 +41,14 @@ div.logo_front {
     max-height: 425px;
 }
 
-#descr_h1{
-    padding-top:1.25em;
-}
-
 #descr_link{
     color:#88b851;
     font-size:large;
     margin:2em;
+}
+
+#descr_intro{
+    text-align:justify;
 }
 
 #descr_pic{

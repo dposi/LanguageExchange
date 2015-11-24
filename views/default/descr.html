@@ -1,13 +1,13 @@
 {{extend 'layout.html'}}
 <div class="headers">
-<h1 id="descr_h1" align= center>What is LangEx?</h1>
+   <h1>What is LangEx?</h1>
 </div>
 
 <hr>
     
 <body id="descr_body" align=center>
 <div id='descr_intro'>
-    Intro Description
+    LangEx, or Language Exchange, is a chat website for people looking to learn a new language in an immersive way. Learning vocabulary and proper grammar is     one part of learning a language, but it's difficult to fully learn without a conversational partner to practice with. LangEx works by pairing users with       each other, based on their language preferences and fluency. Meet and chat with others who are fluent in the language you want to learn, while teaching       them another language at the same time. It's an informal and hands-on way to learn.
 </div>
 <div id='descr_pic'>
     [pic]
@@ -23,7 +23,7 @@
         <li>more to come!</li>
     </ul>
 </div>
-<div id='user_button'>
+<div class='user_button'>
     {{=A('Get Started!',  _class='btn btn-default btn-md round', _href=URL('default', 'user', args=['register'],
         vars=dict(_next=URL('default', 'init_user'))))}}
 </div>
