@@ -9,19 +9,35 @@ a:hover {
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: #FBFEFD;
+    text-align: center;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     padding-top:1.25em;
     color: #FFFFFF;
+    font-size:3em;
+    letter-spacing:6px;
+    word-spacing: 10px;
 }
-
 
 div.headers {
     background-color:#88b851;
     height:125px;
     width:100%;
+}
+
+hr.thin_line{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #88b851, #ccc);
+}
+
+hr.drop_shadow{
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
 
 div.logo_front {
@@ -48,30 +64,62 @@ div.logo_front {
 }
 
 #descr_intro{
+    margin-left:100px;
+    margin-right:100px;
+    padding-bottom:1.55em;
     text-align:justify;
 }
 
 #descr_pic{
     margin-left:auto;
     margin-right:auto;
+    padding-bottom:1.55em;
     width:50%;
     height:50%;
+}
+
+#descr_more{
+    font-size:1.75em;
+}
+
+ul{
+    list-style-type: circle;
 }
 
 #descr_langlist{
     width:200px;
     margin:0 auto;
+    margin-bottom: 125px;
+    padding-top:0.25em;
     text-align:left;
 }
 
+
+
+
+
+/* form customization */
+
+div.language_form {
+    margin-left:20px;
+}
+
+div.container{
+    padding-top:2em;
+    width: 400 px;
+    margin: 0 auto;
+    text-align:center;
+}
+
+div.web2py_user_form{
+
+}
+
+/* button customization */
 div.user_btn {
     margin: 15px;
 }
 
-div.language_form {
-}
-
-/* button customization */
 .btn{
     border: 0 none;
     font-weight: 350;
