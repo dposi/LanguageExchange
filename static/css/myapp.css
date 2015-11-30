@@ -25,6 +25,7 @@ div.headers {
     background-color:#88b851;
     height:125px;
     width:100%;
+    border-radius:100px 100px 100px 100px;
 }
 
 hr.thin_line{

@@ -38,7 +38,7 @@ def reg_lang():
     where user selects language preferences
     """
     record = db.auth_user(auth.user_id).fluent
-    form = SQLFORM(db.languages, record, formstyle='table3cols')
+    form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
         if request.args(0) == 'settings':
             redirect(URL('default', 'settings'))
@@ -52,7 +52,7 @@ def reg_lang2():
     where user selects language preferences
     """
     record = db.auth_user(auth.user_id).learning
-    form = SQLFORM(db.languages, record, formstyle='table3cols')
+    form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
         if request.args(0) == 'settings':
             redirect(URL('default', 'settings'))
