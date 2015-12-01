@@ -5,24 +5,62 @@
     <title></title>
 </head>
 <body>
-<h2>Fluent languages:</h2>
-<p>Arabic: {{=f.Arabic}}</p>
-<p>Chinese: {{=f.Chinese}}</p>
-<p>Danish: {{=f.Danish}}</p>
-<p>English: {{=f.English}}</p>
-<p>French: {{=f.French}}</p>
-<p>German: {{=f.German}}</p>
-<p>Italian: {{=f.Italian}}</p>
-<p>Japanese: {{=f.Japanese}}</p>
+{{for user in db(db.auth_user.id > 0).select():}}
+    <p>{{=user.screenname}}</p>
+    <p>Fluent:
+    {{if user.fluent.Arabic:}}
+        Arabic,
+    {{pass}}
+    {{if user.fluent.Chinese:}}
+        Chinese,
+    {{pass}}
+    {{if user.fluent.Danish:}}
+        Danish,
+    {{pass}}
+    {{if user.fluent.English:}}
+        English,
+    {{pass}}
+    {{if user.fluent.French:}}
+        French,
+    {{pass}}
+    {{if user.fluent.German:}}
+        German,
+    {{pass}}
+    {{if user.fluent.Italian:}}
+        Italian,
+    {{pass}}
+    {{if user.fluent.Japanese:}}
+        Japanese
+    {{pass}}
+    </p>
 
-<h2>Learning languages:</h2>
-<p>Arabic: {{=l.Arabic}}</p>
-<p>Chinese: {{=l.Chinese}}</p>
-<p>Danish: {{=l.Danish}}</p>
-<p>English: {{=l.English}}</p>
-<p>French: {{=l.French}}</p>
-<p>German: {{=l.German}}</p>
-<p>Italian: {{=l.Italian}}</p>
-<p>Japanese: {{=l.Japanese}}</p>
+    <p>Learning:
+    {{if user.learning.Arabic:}}
+        Arabic,
+    {{pass}}
+    {{if user.learning.Chinese:}}
+        Chinese,
+    {{pass}}
+    {{if user.learning.Danish:}}
+        Danish,
+    {{pass}}
+    {{if user.learning.English:}}
+        English,
+    {{pass}}
+    {{if user.learning.French:}}
+        French,
+    {{pass}}
+    {{if user.learning.German:}}
+        German,
+    {{pass}}
+    {{if user.learning.Italian:}}
+        Italian,
+    {{pass}}
+    {{if user.learning.Japanese:}}
+        Japanese
+    {{pass}}
+    </p>
+    <br>
+{{pass}}
 </body>
 </html>

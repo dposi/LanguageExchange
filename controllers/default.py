@@ -65,7 +65,47 @@ def home():
     """
     homepage
     """
-    return dict()
+
+    #matches users to other users who are fluent in a language you want to learn, and vice versa
+
+    auth.user = db.auth_user(auth.user_id)
+
+    #finds one-way matches; ie users who are fluent in a language you want to learn
+    single_matches = db(
+        (
+        (db.languages.Arabic == True & auth.user.learning.Arabic == True) |
+        (db.languages.Chinese == True & auth.user.learning.Chinese == True) |
+        (db.languages.Danish == True & auth.user.learning.Danish == True) |
+        (db.languages.English == True & auth.user.learning.English == True) |
+        (db.languages.French == True & auth.user.learning.French == True) |
+        (db.languages.German == True & auth.user.learning.German == True) |
+        (db.languages.Italian == True & auth.user.learning.Italian == True) |
+        (db.languages.Japanese == True & auth.user.learning.Japanese == True)
+        )
+        &
+        (db.languages.fluent == True)
+    ).select()
+
+    #uses the language records of the potential matches to get the user id
+    owner_ids = list()
+    for single_match in single_matches:
+        owner_ids.append(single_match.owner_id)
+
+    #refines the list down to two-way matches; ie users who also want to learn a language you are fluent in
+    double_matches = list()
+    for owner_id in owner_ids:
+        if owner_id != auth.user_id:
+            owner = db.auth_user(owner_id)
+            if (owner.learning.Arabic & auth.user.fluent.Arabic |
+                owner.learning.Chinese & auth.user.fluent.Chinese |
+                owner.learning.Danish & auth.user.fluent.Danish |
+                owner.learning.English & auth.user.fluent.English |
+                owner.learning.French & auth.user.fluent.French |
+                owner.learning.German & auth.user.fluent.German |
+                owner.learning.Italian & auth.user.fluent.Italian |
+                owner.learning.Japanese & auth.user.fluent.Japanese):
+                double_matches.append(owner.screenname)
+    return dict(match_names=double_matches)
 
 @auth.requires_login()
 def settings():
@@ -80,6 +120,7 @@ def chat_win():
     chat window
     """
     return dict()
+
 
 def user():
     """
@@ -99,6 +140,7 @@ def user():
     """
     return dict(form=auth())
 
+
 def cust_register():
     """
     customized registration
@@ -113,10 +155,14 @@ def cust_register():
 
 @auth.requires_login()
 def debug_user():
-    u = db.auth_user(auth.user_id)
-    f = u.fluent
-    l = u.learning
-    return dict(f=f, l=l)
+    return dict()
+
+
+def reset():
+    db(db.auth_user.id > 0).delete()
+    db(db.languages.id > 0).delete()
+    db(db.messages.id > 0).delete()
+    return dict()
 
 
 @cache.action()
