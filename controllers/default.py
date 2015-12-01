@@ -13,6 +13,7 @@ def index():
         redirect(URL('default', 'home'))
     return dict()
 
+
 def descr():
     """
     description of website
@@ -20,6 +21,7 @@ def descr():
     return dict()
 
 
+#TODO: redirect here if language records for a user are None in case they get to the sign up page in a weird way
 @auth.requires_login()
 def init_user():
     db.languages.insert(owner_id = auth.user_id, fluent = True)
@@ -32,6 +34,9 @@ def init_user():
     redirect(URL('default', 'reg_lang'))
     return dict()
 
+
+#TODO: make it so you can't be fluent in AND learning the same language
+#TODO: redirect to init_user if the user's language records are None
 @auth.requires_login()
 def reg_lang():
     """
@@ -60,6 +65,7 @@ def reg_lang2():
             redirect(URL('default', 'index'))
     return dict(form=form)
 
+
 @auth.requires_login()
 def home():
     """
@@ -71,25 +77,20 @@ def home():
     auth.user = db.auth_user(auth.user_id)
 
     #finds one-way matches; ie users who are fluent in a language you want to learn
-    single_matches = db(
-        (
-        (db.languages.Arabic == True & auth.user.learning.Arabic == True) |
-        (db.languages.Chinese == True & auth.user.learning.Chinese == True) |
-        (db.languages.Danish == True & auth.user.learning.Danish == True) |
-        (db.languages.English == True & auth.user.learning.English == True) |
-        (db.languages.French == True & auth.user.learning.French == True) |
-        (db.languages.German == True & auth.user.learning.German == True) |
-        (db.languages.Italian == True & auth.user.learning.Italian == True) |
-        (db.languages.Japanese == True & auth.user.learning.Japanese == True)
-        )
-        &
-        (db.languages.fluent == True)
-    ).select()
-
-    #uses the language records of the potential matches to get the user id
+    fluent_table = db(
+        db.languages.fluent == True
+        ).select()
     owner_ids = list()
-    for single_match in single_matches:
-        owner_ids.append(single_match.owner_id)
+    for record in fluent_table:
+        if (record.Arabic & auth.user.learning.Arabic |
+            record.Chinese & auth.user.learning.Chinese |
+            record.Danish & auth.user.learning.Danish |
+            record.English & auth.user.learning.English |
+            record.French & auth.user.learning.French |
+            record.German & auth.user.learning.German |
+            record.Italian & auth.user.learning.Italian |
+            record.Japanese & auth.user.learning.Japanese):
+                owner_ids.append(record.owner_id)
 
     #refines the list down to two-way matches; ie users who also want to learn a language you are fluent in
     double_matches = list()
@@ -106,6 +107,7 @@ def home():
                 owner.learning.Japanese & auth.user.fluent.Japanese):
                 double_matches.append(owner.screenname)
     return dict(match_names=double_matches)
+
 
 @auth.requires_login()
 def settings():
@@ -153,7 +155,6 @@ def cust_register():
     return dict(form=form)
 
 
-@auth.requires_login()
 def debug_user():
     return dict()
 
