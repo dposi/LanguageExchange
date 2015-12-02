@@ -2,7 +2,11 @@
 <div class="headers">
    <h1>Select fluent languages</h1>
 </div>
-
-<div class="language_form">
-    {{=form}}
+<div class="container">
+    <div class="language_form">
+        {{if request.args(0)=='settings':
+        form.add_button("Cancel",URL('default','settings'))
+        pass
+        =form}}
+    </div>
 </div>

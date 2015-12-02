@@ -96,25 +96,19 @@ ul{
 }
 
 
-
-
-
 /* form customization */
 
 div.language_form {
-    margin-left:20px;
+    margin-left:6em;
+    font-size:125%;
 }
 
 div.container{
     padding-top:2em;
-    width: 400 px;
-    margin: 0 auto;
-    text-align:center;
+    padding-left:25%;
+    color:#5c7f34;
 }
 
-div.web2py_user_form{
-
-}
 
 /* button customization */
 div.user_btn {
@@ -132,12 +126,9 @@ div.user_btn {
 .btn-default{
     background: #618637;
     color: #ffffff;
+    border-radius: 20px;
 }
 
 .btn-default:hover{
     background: #adce87;
-}
-
-.round {
-  border-radius: 20px;
 }
