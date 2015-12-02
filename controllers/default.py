@@ -21,9 +21,9 @@ def descr():
     return dict()
 
 
-#TODO: redirect here if language records for a user are None in case they get to the sign up page in a weird way
 @auth.requires_login()
 def init_user():
+    auth.user = db.auth_user(auth.user_id)
     db.languages.insert(owner_id = auth.user_id, fluent = True)
     db.languages.insert(owner_id = auth.user_id, fluent = False)
     for record in db(db.languages.owner_id == auth.user_id).select():
@@ -36,12 +36,14 @@ def init_user():
 
 
 #TODO: make it so you can't be fluent in AND learning the same language
-#TODO: redirect to init_user if the user's language records are None
 @auth.requires_login()
 def reg_lang():
     """
     where user selects language preferences
     """
+    auth.user = db.auth_user(auth.user_id)
+    if auth.user.fluent is None or auth.user.learning is None:
+        redirect(URL('default', 'init_user'))
     record = db.auth_user(auth.user_id).fluent
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
@@ -56,6 +58,9 @@ def reg_lang2():
     """
     where user selects language preferences
     """
+    auth.user = db.auth_user(auth.user_id)
+    if auth.user.fluent is None or auth.user.learning is None:
+        redirect(URL('default', 'init_user'))
     record = db.auth_user(auth.user_id).learning
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
@@ -75,7 +80,8 @@ def home():
     #matches users to other users who are fluent in a language you want to learn, and vice versa
 
     auth.user = db.auth_user(auth.user_id)
-
+    if auth.user.fluent is None or auth.user.learning is None:
+        redirect(URL('default', 'init_user'))
     #finds one-way matches; ie users who are fluent in a language you want to learn
     fluent_table = db(
         db.languages.fluent == True

@@ -24,10 +24,10 @@
         French 
     {{pass}}
     {{if user.fluent.German:}}
-        German 
+        German,
     {{pass}}
     {{if user.fluent.Italian:}}
-        Italian 
+        Italian,
     {{pass}}
     {{if user.fluent.Japanese:}}
         Japanese
@@ -36,25 +36,25 @@
 
     <p>Learning:
     {{if user.learning.Arabic:}}
-        Arabic 
+        Arabic,
     {{pass}}
     {{if user.learning.Chinese:}}
-        Chinese 
+        Chinese,
     {{pass}}
     {{if user.learning.Danish:}}
-        Danish 
+        Danish,
     {{pass}}
     {{if user.learning.English:}}
-        English 
+        English,
     {{pass}}
     {{if user.learning.French:}}
-        French 
+        French,
     {{pass}}
     {{if user.learning.German:}}
-        German 
+        German,
     {{pass}}
     {{if user.learning.Italian:}}
-        Italian 
+        Italian,
     {{pass}}
     {{if user.learning.Japanese:}}
         Japanese
