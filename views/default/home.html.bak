@@ -1,17 +1,29 @@
 {{extend 'layout.html'}}
-<h1>HomeDash</h1>
-{{=BEAUTIFY(response._vars)}}
+<div class="headers">
+   <h1>HomeDash</h1>
+</div>
+<hr class="thin_line">
 
 <div class="match_users">
-    Users matched
+    Matched Users:
+    {{for match_name, match_to, match_from in matches:}}
+        <p>{{=match_name}}, knows 
+            {{for lang in match_to:}}
+            {{=lang}}, 
+            {{pass}}
+            wants 
+            {{for lang in match_from:}}
+            {{=lang}}
+            {{pass}}.</p>
+    {{pass}}
 </div>
 
 
-<hr>
-<div class="settings_btn">
-  {{=A('Change Settings', _class='btn btn-success', _href=URL('default', 'settings'))}}
+<hr class="drop_shadow">
+<div class="user_btn">
+  {{=A('Change Settings', _class='btn btn-default btn-md', _href=URL('default', 'settings'))}}
 </div>
 
-<div class="logout_btn">
-  {{=A('Logout', _class='btn btn-danger', _href=URL('default', 'user', args='logout'))}}
+<div class="user_btn">
+  {{=A('Logout', _class='btn btn-default btn-md', _href=URL('default', 'user', args='logout'))}}
 </div>

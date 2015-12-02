@@ -53,6 +53,7 @@ def reg_lang():
             redirect(URL('default', 'reg_lang2'))
     return dict(form=form)
 
+
 @auth.requires_login()
 def reg_lang2():
     """
@@ -82,37 +83,69 @@ def home():
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
         redirect(URL('default', 'init_user'))
-    #finds one-way matches; ie users who are fluent in a language you want to learn
-    fluent_table = db(
-        db.languages.fluent == True
-        ).select()
-    owner_ids = list()
-    for record in fluent_table:
-        if (record.Arabic & auth.user.learning.Arabic |
-            record.Chinese & auth.user.learning.Chinese |
-            record.Danish & auth.user.learning.Danish |
-            record.English & auth.user.learning.English |
-            record.French & auth.user.learning.French |
-            record.German & auth.user.learning.German |
-            record.Italian & auth.user.learning.Italian |
-            record.Japanese & auth.user.learning.Japanese):
-                owner_ids.append(record.owner_id)
+    # TODO: stretch goal, create a dynamic query that finds language table records that are fluent in the languages you want to learn
+    # until then enjoy iterating over the entire user table every time
+    # TODO: delete that comment before submitting
+    user_table = db(db.auth_user.id > 0).select()
+    matches = list()
+    for record in user_table:
+        match_to = list() #list of languages other users are fluent in that you want to learn
+        match_from = list() # list of languages other users want to learn that you are fluent in
+        match_flag = False
+        if record.fluent.Arabic & auth.user.learning.Arabic:
+            match_to.append('Arabic')
+            match_flag = True
+        if  record.fluent.Chinese & auth.user.learning.Chinese:
+            match_to.append('Chinese')
+            match_flag = True
+        if  record.fluent.Danish & auth.user.learning.Danish:
+            match_to.append('Danish')
+            match_flag = True
+        if  record.fluent.English & auth.user.learning.English:
+            match_to.append('English')
+            match_flag = True
+        if  record.fluent.French & auth.user.learning.French:
+            match_to.append('French')
+            match_flag = True
+        if  record.fluent.German & auth.user.learning.German:
+            match_to.append('German')
+            match_flag = True
+        if  record.fluent.Italian & auth.user.learning.Italian:
+            match_to.append('Italian')
+            match_flag = True
+        if  record.fluent.Japanese & auth.user.learning.Japanese:
+            match_to.append('Japanese')
+            match_flag = True
+        if match_flag == True:
+            match_flag = False
+            if record.learning.Arabic & auth.user.fluent.Arabic:
+                match_from.append('Arabic')
+                match_flag = True
+            if record.learning.Chinese & auth.user.fluent.Chinese:
+                match_from.append('Chinese')
+                match_flag = True
+            if record.learning.Danish & auth.user.fluent.Danish:
+                match_from.append('Danish')
+                match_flag = True
+            if record.learning.English & auth.user.fluent.English:
+                match_from.append('English')
+                match_flag = True
+            if record.learning.French & auth.user.fluent.French:
+                match_from.append('French')
+                match_flag = True
+            if record.learning.German & auth.user.fluent.German:
+                match_from.append('German')
+                match_flag = True
+            if record.learning.Italian & auth.user.fluent.Italian:
+                match_from.append('Italian')
+                match_flag = True
+            if record.learning.Japanese & auth.user.fluent.Japanese:
+                match_from.append('Japanese')
+                match_flag = True
+            if match_flag == True:
+                matches.append((record.screenname, match_to, match_from))
 
-    #refines the list down to two-way matches; ie users who also want to learn a language you are fluent in
-    double_matches = list()
-    for owner_id in owner_ids:
-        if owner_id != auth.user_id:
-            owner = db.auth_user(owner_id)
-            if (owner.learning.Arabic & auth.user.fluent.Arabic |
-                owner.learning.Chinese & auth.user.fluent.Chinese |
-                owner.learning.Danish & auth.user.fluent.Danish |
-                owner.learning.English & auth.user.fluent.English |
-                owner.learning.French & auth.user.fluent.French |
-                owner.learning.German & auth.user.fluent.German |
-                owner.learning.Italian & auth.user.fluent.Italian |
-                owner.learning.Japanese & auth.user.fluent.Japanese):
-                double_matches.append(owner.screenname)
-    return dict(match_names=double_matches)
+    return dict(matches=matches)
 
 
 @auth.requires_login()

@@ -5,9 +5,16 @@
 <hr class="thin_line">
 
 <div class="match_users">
-    Users matched:
-    {{for match in match_names:}}
-        <p>{{=match}}</p>
+    Matched Users:
+    {{for match_name, match_to, match_from in matches:}}
+        <p>{{=match_name}}, knows 
+            {{for lang in match_to:}}
+            {{=lang}}, 
+            {{pass}}
+            wants 
+            {{for lang in match_from:}}
+            {{=lang}}, 
+            {{pass}}</p>
     {{pass}}
 </div>
 
