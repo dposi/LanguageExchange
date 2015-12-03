@@ -10,6 +10,13 @@
     <div class="row">
         <div id="web2py_user_form" class="col-md-6">
         {{
+        if request.args(0)=='profile':
+            =HR()
+            =A('Change fluent languages', _href=URL('default', 'reg_lang', args=['settings']))
+            =BR()
+            =A('Change languages to learn', _href=URL('default', 'reg_lang2', args=['settings']))
+            =HR()
+        pass
         if request.args(0)=='login':
             if not 'register' in auth.settings.actions_disabled:
                 form.add_button(T('Sign Up'),URL(args='register', vars={'_next': request.vars._next} if request.vars._next else None),_class='btn btn-default btn-md')
