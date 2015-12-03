@@ -70,11 +70,40 @@ db.define_table('languages',
                 Field('Japanese', 'boolean', default=False)
                 )
 
-auth.settings.extra_fields['auth_user']=[
-    Field('screenname', requires=IS_NOT_EMPTY()),
-    Field('fluent', 'reference languages', readable=False, writable=False),
-    Field('learning', 'reference languages', readable=False, writable=False)
-]
+#customized auth table
+db.define_table(
+    auth.settings.table_user_name,
+    Field('first_name', length=128, default=''),
+    Field('last_name', length=128, default=''),
+    Field('screenname', length=128, unique=True,
+          label='Screen Name'),
+    Field('fluent', 'reference languages',
+          writable=False, readable=False),
+    Field('learning', 'reference languages',
+          writable=False, readable=False),
+    Field('email', length=128, default='', unique=True),
+    Field('password', 'password', length=512,
+          readable=False, label='Password'),
+    Field('registration_key', length=512,
+          writable=False, readable=False, default=''),
+    Field('reset_password_key', length=512,
+          writable=False, readable=False, default=''),
+    Field('registration_id', length=512,
+          writable=False, readable=False, default=''))
+
+#auth validation
+custom_auth_table = db[auth.settings.table_user_name]
+custom_auth_table.first_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+custom_auth_table.last_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+custom_auth_table.screenname.requires = [
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty),
+    IS_NOT_IN_DB(db, custom_auth_table.screenname)]
+custom_auth_table.email.requires = [
+  IS_EMAIL(error_message=auth.messages.invalid_email),
+  IS_NOT_IN_DB(db, custom_auth_table.email)]
+
+
+auth.settings.table_user = custom_auth_table
 
 ## create all tables needed by auth if not custom tables
 auth.define_tables(username=False, signature=False)

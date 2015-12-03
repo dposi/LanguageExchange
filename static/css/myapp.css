@@ -119,6 +119,7 @@ div.user_btn {
     border: 0 none;
     font-weight: 350;
     letter-spacing: 1px;
+    margin:10px 5px 0px;
     padding: 15px 20px;
     text-transform: uppercase;
 }
@@ -131,4 +132,11 @@ div.user_btn {
 
 .btn-default:hover{
     background: #adce87;
+    color:#ffffff;
+}
+
+.btn-default:focus{
+    outline:0 !important;
+    background: #adce87 !important;
+    color:#ffffff !important;
 }
