@@ -1,2 +1,81 @@
 {{extend 'layout.html'}}
-<h1></h1>
+<script id="template" type="text/ractive">
+<h2>Messages:</h2>
+<div class="message_list">
+  {% #message_dict:msg_id %}
+      <div>
+        <p>{% msg %}</p>
+      </div>
+  {% /message_dict %}
+</div>
+<textarea data-areaid="3" value="{% message_draft %}" rows="1">
+<input class="btn btn-primary" type="submit" value="Send" on-click="newmessage"/>
+
+</script>
+
+
+<script>
+$(function() {
+
+  // Ractive object
+  var MAIN = new Ractive({
+    el: '#target',
+    template: '#template',
+    delimiters: ['{%', '%}'],
+    tripleDelimiters: ['{%%', '%%}'],
+    data: {
+      message_dict: {},
+      message_draft: "",
+      userfrom_id: "{{=auth.user_id}}"
+      userto_id: "{{=userto_id}}"
+      loading: true
+    }
+  });
+
+  // Loads the initial list of messages.
+  $.ajax("{{=URL('default', 'load_messages', user_signature=True)}}",
+          {
+            method: 'POST',
+            success: function (data) {
+              MAIN.set('message_dict', data['message_dict']);
+              MAIN.set('loading', false);
+            }
+          }
+  );
+
+  function send_message(message, userfrom, userto) {
+    $.ajax("{{=URL('default', 'add_message', user_signature=True)}}",
+
+            {
+              data: {
+                msg: message,
+                userfrom: userfrom,
+                userto: userto
+              },
+              method: 'POST',
+              success: function() {
+                // Reflect in the list of drafts or messages the update sent to the server.
+                var message_dict = MAIN.get('message_dict');
+                message_dict[id] = {
+                    message: message
+                }
+                MAIN.set('message_dict', message_dict);
+              },
+              error: function() {}
+            }
+    );
+  }
+
+  // This code is called when the submit button is pressed.
+  MAIN.on("newmessage", function(e) {
+    var message = MAIN.get('message_draft');
+    if ($.trim(message).length > 0) {
+      // Send content back to server.  false = message is not a draft.
+      send_message(message, MAIN.get('userfrom_id'), MAIN.get('userto_id'));
+      MAIN.set('message_draft', '');
+    }
+    return false;
+  });
+
+});
+</script>

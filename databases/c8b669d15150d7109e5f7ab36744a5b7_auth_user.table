@@ -69,7 +69,7 @@ I512
 sg5
 I00
 sg6
-I8
+I11
 sg7
 S'CHAR(512)'
 p27
@@ -102,7 +102,7 @@ I512
 sg5
 I00
 sg6
-I10
+I5
 sg7
 S'INTEGER REFERENCES languages (id) ON DELETE CASCADE  '
 p34
@@ -119,7 +119,7 @@ I512
 sg5
 I00
 sg6
-I7
+I10
 sg7
 S'CHAR(512)'
 p38
@@ -135,7 +135,7 @@ I512
 sg5
 I00
 sg6
-I11
+I6
 sg7
 S'INTEGER REFERENCES languages (id) ON DELETE CASCADE  '
 p41
@@ -151,7 +151,7 @@ I512
 sg5
 I00
 sg6
-I5
+I8
 sg7
 S'CHAR(512)'
 p44
@@ -168,7 +168,7 @@ I512
 sg5
 I00
 sg6
-I6
+I9
 sg7
 S'CHAR(512)'
 p48
@@ -180,13 +180,13 @@ ssS'email'
 p49
 (dp50
 g4
-I512
+I128
 sg5
-I00
+I01
 sg6
-I4
+I7
 sg7
-S'CHAR(512)'
+S'CHAR(128) UNIQUE'
 p51
 sg9
 I00
@@ -196,13 +196,13 @@ ssS'screenname'
 p52
 (dp53
 g4
-I512
+I128
 sg5
-I00
+I01
 sg6
-I9
+I4
 sg7
-S'CHAR(512)'
+S'CHAR(128) UNIQUE'
 p54
 sg9
 I00
