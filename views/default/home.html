@@ -5,17 +5,53 @@
 <hr class="thin_line">
 
 <div class="match_users">
-    Matched Users:
-    {{for match_name, match_to, match_from in matches:}}
-        <p>{{=match_name}}, knows 
-            {{for lang in match_to:}}
-            {{=lang}}, 
-            {{pass}}
-            wants 
-            {{for lang in match_from:}}
-            {{=lang}}, 
-            {{pass}}</p>
-    {{pass}}
+    <h3>Matched Users:</h3>
+    <table>
+        <!-- Title row for the table -->
+        <tr>
+            <td>Name:</td>
+            <td>Knows:</td>
+            <td>Wants to learn:</td>
+        </tr>
+        <!-- Where the magic happens -->
+        <!-- Rows for each match - match_to is a list of languages they know that you want to learn,
+            match_from is a list of languages you know that they want to learn -->
+        {{for match_name, match_to, match_from in matches:}}
+        <tr>
+            <td><p>{{=match_name}}</p></td>
+            <td>
+                <ul> <!-- If there are more than 3 languages they know that you want to learn, list 3 then put the ... -->
+                    {{if len(match_to) > 3:}}
+                        <li>{{=match_to.pop(0)}}</li>
+                        <li>{{=match_to.pop(0)}}</li>
+                        <li>{{=match_to.pop(0)}}</li>
+                        <p>...</p>
+                    <!-- Otherwise list them all -->
+                    {{else:}}
+                        {{for lang in match_to:}}
+                            <li>{{=lang}}</li>
+                        {{pass}}
+                    {{pass}}
+                </ul>
+            </td>
+            <td>
+                <!-- Same thing -->
+                <ul>
+                    {{if len(match_from) > 3:}}
+                        <li>{{=match_from.pop(0)}}</li>
+                        <li>{{=match_from.pop(0)}}</li>
+                        <li>{{=match_from.pop(0)}}</li>
+                        <p>...</p>
+                    {{else:}}
+                        {{for lang in match_from:}}
+                            <li>{{=lang}}</li>
+                        {{pass}}
+                    {{pass}}
+                </ul>
+            </td>
+        </tr>
+        {{pass}}
+    </table>
 </div>
 
 
