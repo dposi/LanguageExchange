@@ -15,7 +15,6 @@
 <span id="message_text_span"><textarea id="message_textarea" data-areaid="3" value="{% message_draft %}" rows="1" /></span>
 <input class="btn btn-primary" id="message_send_btn" type="submit" value="Send" on-click="newmessage"/>
 </div>
-<input class="btn btn-primary" type="submit" value="Test" on-click="testmessage" />
 </script>
 
 <script>
@@ -30,8 +29,6 @@ $(function() {
     data: {
       message_dict: {},
       message_draft: "",
-      userfrom_id: "{{=auth.user_id}}",
-      userto_id: "{{=userto_id}}",
       loading: true
     }
   });
@@ -47,46 +44,24 @@ $(function() {
           }
   );
 
-  function send_message(message, userto) {
+  function send_message(message) {
     $.ajax("{{=URL('default', 'add_message', user_signature=True)}}",
 
             {
               data: {
-                msg: message,
-                userto: userto
+                msg: message
               },
               method: 'POST',
               success: function() {
                 // Reflect in the list of drafts or messages the update sent to the server.
                 var message_dict = MAIN.get('message_dict');
-                message_dict[Math.random()] = {
+                message_dict[generateUUID()] = {
                     msg: message
                 }
                 MAIN.set('message_dict', message_dict);
               },
-              error: function() {}
-            }
-    );
-  }
-
-    function test_message() {
-    $.ajax("{{=URL('default', 'add_message', user_signature=True)}}",
-
-            {
-              data: {
-                msg: "test message",
-                userto: 46
-              },
-              method: 'POST',
-              success: function() {
-                // Reflect in the list of drafts or messages the update sent to the server.
-                var message_dict = MAIN.get('message_dict');
-                message_dict[Math.random()] = {
-                    msg: message
-                }
-                MAIN.set('message_dict', message_dict);
-              },
-              error: function() {}
+              error: function(jqxhr, textStatus, errorThrown) {
+              }
             }
     );
   }
@@ -95,18 +70,25 @@ $(function() {
   MAIN.on("newmessage", function(e) {
     var message = MAIN.get('message_draft');
     if ($.trim(message).length > 0) {
-      // Send content back to server.  false = message is not a draft.
-      send_message(message, MAIN.get('userfrom_id'), MAIN.get('userto_id'));
+      send_message(message);
       MAIN.set('message_draft', '');
     }
     return false;
   });
 
-
-    MAIN.on("testmessage", function(e) {
-    test_message();
-    return false;
-  });
+      // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+  function generateUUID(){
+    var d = new Date().getTime();
+    if(window.performance && typeof window.performance.now === "function"){
+        d += performance.now();; //use high-precision timer if available
+    }
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+  }
 
 });
 </script>
