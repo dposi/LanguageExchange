@@ -9,6 +9,7 @@ a:hover {
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: #FBFEFD;
+    color:#5c7f34;
     text-align: center;
 }
 
@@ -94,6 +95,32 @@ ul{
     padding-top:0.25em;
     text-align:left;
 }
+
+/* table customization */
+#match_user{
+}
+
+table {
+}
+
+/* header row */
+#match_col {
+    font-size: 1.2em;
+    height:75px;
+    background-color:#88b851;
+    border: 1px solid black
+    margin-left: 10px;
+    margin-right: 10px;
+    /*width:50%;
+    border-radius:100px 100px 100px 100px;*/
+}
+
+/* row with matched user details */
+#match_row {
+    height:45px;
+    background-color:#dae9c9;
+}
+
 
 
 /* form customization */

@@ -47,7 +47,10 @@ def add_message():
     db.messages.insert(msg = request.vars.msg, userto = None, userfrom = db.auth_user(request.vars.authuserid))
     return "ok"
 
+<<<<<<< Updated upstream
 #TODO: make it so you can't be fluent in AND learning the same language
+=======
+>>>>>>> Stashed changes
 @auth.requires_login()
 def reg_lang():
     """
@@ -59,10 +62,18 @@ def reg_lang():
     record = db.auth_user(auth.user_id).fluent
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
-        if request.args(0) == 'settings':
-            redirect(URL('default', 'settings'))
+        #validates if form has at least one language checked
+        if form.vars.Arabic | form.vars.Chinese | form.vars.Danish | form.vars.English |form.vars.French | form.vars.German | form.vars.Italian | form.vars.Japanese:
+            #validates if user has chosen a language already learning
+            if (form.vars.Arabic & auth.user.learning.Arabic) | (form.vars.Chinese & auth.user.learning.Chinese) | (form.vars.Danish & auth.user.learning.Danish) | (form.vars.English & auth.user.learning.English) | (form.vars.French & auth.user.learning.French) | (form.vars.German & auth.user.learning.German) | (form.vars.Italian & auth.user.learning.Italian) | (form.vars.Japanese & auth.user.learning.Japanese):
+                response.flash = 'Cannot be fluent in language currently learning'
+            else:
+                if request.args(0) == 'settings':
+                    redirect(URL('default', 'user', args='profile'))
+                else:
+                    redirect(URL('default', 'reg_lang2'))
         else:
-            redirect(URL('default', 'reg_lang2'))
+            response.flash = 'Select a language to continue'
     return dict(form=form)
 
 
@@ -77,10 +88,19 @@ def reg_lang2():
     record = db.auth_user(auth.user_id).learning
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
-        if request.args(0) == 'settings':
-            redirect(URL('default', 'settings'))
+        #validates if form has at least one language checked
+        if form.vars.Arabic | form.vars.Chinese | form.vars.Danish | form.vars.English |form.vars.French | form.vars.German | form.vars.Italian | form.vars.Japanese:
+            #validates if user has chosen a language already fluent in
+            if (form.vars.Arabic & auth.user.fluent.Arabic) | (form.vars.Chinese & auth.user.fluent.Chinese) | (form.vars.Danish & auth.user.fluent.Danish) | (form.vars.English & auth.user.fluent.English) | (form.vars.French & auth.user.fluent.French) | (form.vars.German & auth.user.fluent.German) | (form.vars.Italian & auth.user.fluent.Italian) | (form.vars.Japanese & auth.user.fluent.Japanese):
+                response.flash = 'Cannot learn language already fluent in'
+            else:
+                #redirect conditions
+                if request.args(0) == 'settings':
+                    redirect(URL('default', 'user', args='profile'))
+                else:
+                    redirect(URL('default', 'index'))
         else:
-            redirect(URL('default', 'index'))
+            response.flash = 'Select a language to continue'
     return dict(form=form)
 
 
@@ -159,14 +179,6 @@ def home():
 
     return dict(matches=matches)
 
-
-@auth.requires_login()
-def settings():
-    """
-    where user can change settings
-    """
-    return dict()
-
 @auth.requires_login()
 def chat_win():
     """
@@ -192,19 +204,6 @@ def user():
     to decorate functions that need access control
     """
     return dict(form=auth())
-
-
-def cust_register():
-    """
-    customized registration
-    """
-    form = auth.register()
-    if form.accepts(request,session):
-        redirect(URL('reg_lang'))
-    else:
-        response.flash = 'Fill out details'
-    return dict(form=form)
-
 
 def debug_user():
     return dict()
