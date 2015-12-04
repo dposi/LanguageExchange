@@ -6,7 +6,7 @@
 </head>
 <body>
 {{for user in db(db.auth_user.id > 0).select():}}
-    <p>{{=user.screenname}}</p>
+    <p>{{=user.screenname}}: {{=user.id}}</p>
     <p>Fluent:
     {{if user.fluent.Arabic:}}
         Arabic 

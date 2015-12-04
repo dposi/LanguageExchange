@@ -36,13 +36,14 @@ def init_user():
 
 
 def load_messages():
-    messages = db(db.messages.id > 0)
+    messages = db(db.messages.id > 0).select()
     d = {m.id: {'msg_id': m.id, 'msg': m.msg} for m in messages}
     return response.json(dict(message_dict=d))
 
 
 def add_message():
-    return dict()
+    db.messages.insert(msg = request.vars.msg, userto = db.auth_user(request.vars.userto), userfrom = auth.user)
+    return "ok"
 
 
 #TODO: make it so you can't be fluent in AND learning the same language
@@ -170,7 +171,7 @@ def chat_win():
     """
     chat window
     """
-    return dict(userto_id=db(db.auth_user.screenname == 'dev').id)
+    return dict(userto_id=46)
 
 
 def user():
