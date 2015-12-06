@@ -35,6 +35,7 @@ $(function() {
   });
 
   // Loads the initial list of messages.
+  function load_messages() {
   $.ajax("{{=URL('default', 'load_messages', args=[messaging], user_signature=True)}}",
           {
             method: 'POST',
@@ -43,7 +44,8 @@ $(function() {
               MAIN.set('loading', false);
             }
           }
-  );
+  );}
+    load_messages();
 
   function send_message(message) {
     $.ajax("{{=URL('default', 'add_message', user_signature=True)}}",
@@ -69,20 +71,22 @@ $(function() {
   }
 
   // This code is called when the send button is pressed
-  MAIN.on("newmessage", function(e) {
-    var message = MAIN.get('message_draft');
-    if ($.trim(message).length > 0) {
-      send_message(message);
-      MAIN.set('message_draft', '');
-    }
+  MAIN.on("newmessage", try_message());
+
+   function try_message() {
+     var message = MAIN.get('message_draft');
+     if ($.trim(message).length > 0) {
+       send_message(message);
+       MAIN.set('message_draft', '');
+     }
     return false;
-  });
+   }
 
       // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
   function generateUUID(){
     var d = new Date().getTime();
     if(window.performance && typeof window.performance.now === "function"){
-        d += performance.now();; //use high-precision timer if available
+        d += performance.now(); //use high-precision timer if available
     }
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = (d + Math.random()*16)%16 | 0;
@@ -91,6 +95,15 @@ $(function() {
     });
     return uuid;
   }
+
+  $("#message_textarea").keypress(function(event) {
+      if (event.which == 13) {
+          event.preventDefault();
+          try_message();
+      }
+  })
+
+  setInterval(load_messages, 1000);
 
 });
 </script>

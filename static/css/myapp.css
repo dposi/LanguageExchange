@@ -176,8 +176,11 @@ div.message_list {
     overflow-y: auto;
 }
 
-#message_bar{
-    width: 100%;
+#message_bar {
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    width: 90%;
     height: 100px;
 }
 #message_textarea {
