@@ -2,6 +2,7 @@
 <div class="headers">
    <h1>HomeDash</h1>
 </div>
+        <h3>Welcome {{=auth.user.first_name}}</h3>
 <hr class="thin_line">
 
 <div id="match_users">
@@ -16,9 +17,9 @@
         <!-- Where the magic happens -->
         <!-- Rows for each match - match_to is a list of languages they know that you want to learn,
             match_from is a list of languages you know that they want to learn -->
-        {{for match_name, match_to, match_from in matches:}}
+        {{for match_name, match_to, match_from, match_id in matches:}}
         <tr id="match_row">
-            <td><p>{{=match_name}}</p></td>
+            <td><a href="{{=URL('default', 'chat_win', args=[match_id])}}">{{=match_name}}</a></td>
             <td>
                 <ul> <!-- If there are more than 3 languages they know that you want to learn, list 3 then put the ... -->
                     {{if len(match_to) > 3:}}

@@ -36,9 +36,21 @@ def init_user():
     return dict()
 
 
-#TODO: should only select messages addressed to the current user
 def load_messages():
-    messages = db(db.user_messages.id > 0).select()
+    #old shitty way
+    """messages_to = db((db.user_messages.userfrom == auth.user_id)&(db.user_messages.userto == request.args(0))).select()
+    messages_from = db((db.user_messages.userfrom == request.args(0))&(db.user_messages.userto == auth.user_id)).select()
+    messages = messages_to | messages_from
+    message_list = messages.as_list()
+    message_list.sort(key=lambda message: message['msg_time'])
+    d = {m['id']: {'msg_id': m['id'], 'msg': m['msg']} for m in message_list}"""
+
+    #new beautiful way
+    messages = db(
+        ((db.user_messages.userfrom == auth.user_id)&(db.user_messages.userto == request.args(0))) |
+        ((db.user_messages.userfrom == request.args(0))&(db.user_messages.userto == auth.user_id))
+    ).select()
+    #sorting the messages isnt even necessary because they are displayed in order of id which is always chronological
     d = {m.id: {'msg_id': m.id, 'msg': m.msg} for m in messages}
     return response.json(dict(message_dict=d))
 
@@ -173,7 +185,7 @@ def home():
                 match_from.append('Japanese')
                 match_flag = True
             if match_flag == True:
-                matches.append((record.screenname, match_to, match_from))
+                matches.append((record.screenname, match_to, match_from, record.id))
 
     return dict(matches=matches)
 
@@ -209,8 +221,14 @@ def debug_user():
 
 def reset():
     db.user_messages.truncate()
-    return dict()
+    return "Reset messages"
 
+
+def reset_all():
+    db.auth_user.truncate()
+    db.languages.truncate()
+    db.user_messages.truncate()
+    return "Reset all"
 
 @cache.action()
 def download():
