@@ -29,6 +29,7 @@ $(function() {
     data: {
       message_dict: {},
       message_draft: "",
+      recipient: "{{=messaging}}",
       loading: true
     }
   });
@@ -49,7 +50,8 @@ $(function() {
 
             {
               data: {
-                msg: message
+                msg: message,
+                recipient: parseInt(MAIN.get('recipient'))
               },
               method: 'POST',
               success: function() {
@@ -57,7 +59,7 @@ $(function() {
                 var message_dict = MAIN.get('message_dict');
                 message_dict[generateUUID()] = {
                     msg: message
-                }
+                };
                 MAIN.set('message_dict', message_dict);
               },
               error: function(jqxhr, textStatus, errorThrown) {

@@ -71,11 +71,10 @@ p22
 sg9
 I00
 sg10
-S'id'
-p23
+g20
 ssS'userfrom'
-p24
-(dp25
+p23
+(dp24
 g4
 I512
 sg5
@@ -84,7 +83,7 @@ sg6
 I2
 sg7
 S'INTEGER'
-p26
+p25
 sg9
 I00
 sg10

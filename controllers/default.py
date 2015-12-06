@@ -8,6 +8,7 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
 
+
 def index():
     if auth.user_id is not None:
         redirect(URL('default', 'home'))
@@ -37,20 +38,17 @@ def init_user():
 
 #TODO: should only select messages addressed to the current user
 def load_messages():
-    messages = db(db.messages.id > 0).select()
+    messages = db(db.user_messages.id > 0).select()
     d = {m.id: {'msg_id': m.id, 'msg': m.msg} for m in messages}
     return response.json(dict(message_dict=d))
 
 
 @auth.requires_login()
 def add_message():
-    db.messages.insert(msg = request.vars.msg, userto = None, userfrom = db.auth_user(request.vars.authuserid))
+    db.user_messages.insert(userfrom = auth.user_id, userto = request.vars.recipient, msg = request.vars.msg)
     return "ok"
 
-<<<<<<< Updated upstream
 #TODO: make it so you can't be fluent in AND learning the same language
-=======
->>>>>>> Stashed changes
 @auth.requires_login()
 def reg_lang():
     """
@@ -184,7 +182,7 @@ def chat_win():
     """
     chat window
     """
-    return dict()
+    return dict(messaging=request.args(0))
 
 
 def user():
@@ -210,9 +208,7 @@ def debug_user():
 
 
 def reset():
-    db(db.auth_user.id > 0).delete()
-    db(db.languages.id > 0).delete()
-    db(db.messages.id > 0).delete()
+    db.user_messages.truncate()
     return dict()
 
 
