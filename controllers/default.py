@@ -24,6 +24,9 @@ def descr():
 
 @auth.requires_login()
 def init_user():
+    """
+    Initializes a new user's account by creating the necessary records in db.languages
+    """
     auth.user = db.auth_user(auth.user_id)
     db.languages.insert(owner_id = auth.user_id, fluent = True)
     db.languages.insert(owner_id = auth.user_id, fluent = False)
@@ -36,6 +39,8 @@ def init_user():
     return dict()
 
 
+@auth.requires_login()
+@auth.requires_signature()
 def load_messages():
     #old shitty way
     """messages_to = db((db.user_messages.userfrom == auth.user_id)&(db.user_messages.userto == request.args(0))).select()
@@ -56,6 +61,7 @@ def load_messages():
 
 
 @auth.requires_login()
+@auth.requires_signature()
 def add_message():
     db.user_messages.insert(userfrom = auth.user_id, userto = request.vars.recipient, msg = request.vars.msg)
     return "ok"
@@ -68,7 +74,7 @@ def reg_lang():
     """
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
-        redirect(URL('default', 'init_user'))
+        redirect(URL('default', 'init_user', user_signature=True))
     record = db.auth_user(auth.user_id).fluent
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
@@ -94,7 +100,7 @@ def reg_lang2():
     """
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
-        redirect(URL('default', 'init_user'))
+        redirect(URL('default', 'init_user', user_signature=True))
     record = db.auth_user(auth.user_id).learning
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
@@ -124,7 +130,7 @@ def home():
 
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
-        redirect(URL('default', 'init_user'))
+        redirect(URL('default', 'init_user', user_signature=True))
     # TODO: stretch goal, create a dynamic query that finds language table records that are fluent in the languages you want to learn
     # until then enjoy iterating over the entire user table every time
     # TODO: delete that comment before submitting
@@ -190,10 +196,14 @@ def home():
     return dict(matches=matches)
 
 @auth.requires_login()
+@auth.requires_signature()
 def chat_win():
     """
     chat window
     """
+    auth.user = db.auth_user(auth.user_id)
+    if auth.user.fluent is None or auth.user.learning is None:
+        redirect(URL('default', 'init_user', user_signature=True))
     return dict(messaging=request.args(0))
 
 

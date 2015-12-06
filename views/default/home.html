@@ -19,7 +19,7 @@
             match_from is a list of languages you know that they want to learn -->
         {{for match_name, match_to, match_from, match_id in matches:}}
         <tr id="match_row">
-            <td><a href="{{=URL('default', 'chat_win', args=[match_id])}}">{{=match_name}}</a></td>
+            <td><a href="{{=URL('default', 'chat_win', args=[match_id], user_signature=True)}}">{{=match_name}}</a></td>
             <td>
                 <ul> <!-- If there are more than 3 languages they know that you want to learn, list 3 then put the ... -->
                     {{if len(match_to) > 3:}}
