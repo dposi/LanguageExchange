@@ -2,18 +2,25 @@
 <body>
     <div id="target"></div>
 </body>
+
 <script id="template" type="text/ractive">
-<div class="headers"><h2>Messages:</h2></div>
-<div class="message_list">
-  {% #message_dict:msg_id %}
-      <div>
-        <p>{% msg %}</p>
-      </div>
-  {% /message_dict %}
-</div>
+<div id="message_header" class="headers"><h2>Messages:</h2></div>
 <div id="message_bar">
-<span id="message_text_span"><textarea id="message_textarea" data-areaid="3" value="{% message_draft %}" rows="1" /></span>
+<textarea id="message_textarea" data-areaid="3" value="{% message_draft %}" rows="1" />
 <input class="btn btn-primary" id="message_send_btn" type="submit" value="Send" on-click="newmessage"/>
+</div>
+<div id="message_list">
+  {% #message_dict:msg_id %}
+      {% #if sent %}
+        <div class="sent_message">
+            <p>{% msg %}</p>
+        </div>
+       {% else %}
+        <div class="received_message">
+            <p>{% msg %}</p>
+        </div>
+       {% /if %}
+  {% /message_dict %}
 </div>
 </script>
 
@@ -33,6 +40,7 @@ $(function() {
       loading: true
     }
   });
+
 
   // Loads the initial list of messages.
   function load_messages() {
@@ -60,20 +68,19 @@ $(function() {
                 // Reflect in the list of messages the update sent to the server.
                 var message_dict = MAIN.get('message_dict');
                 message_dict[generateUUID()] = {
-                    msg: message
+                    msg: message,
+                    sent: true
                 };
                 MAIN.set('message_dict', message_dict);
+                  // from http://stackoverflow.com/questions/270612/scroll-to-bottom-of-div
+                $("#message_list").stop().animate({scrollTop: $("#message_list")[0].scrollHeight}, 500);
               },
               error: function(jqxhr, textStatus, errorThrown) {
               }
             }
     );
   }
-
-  // This code is called when the send button is pressed
-  MAIN.on("newmessage", try_message());
-
-   function try_message() {
+    function try_message() {
      var message = MAIN.get('message_draft');
      if ($.trim(message).length > 0) {
        send_message(message);
@@ -81,6 +88,11 @@ $(function() {
      }
     return false;
    }
+
+  // This code is called when the send button is pressed
+  MAIN.on("newmessage", function() {
+      try_message();
+  });
 
       // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
   function generateUUID(){

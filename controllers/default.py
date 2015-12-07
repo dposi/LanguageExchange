@@ -56,7 +56,7 @@ def load_messages():
         ((db.user_messages.userfrom == request.args(0))&(db.user_messages.userto == auth.user_id))
     ).select()
     #sorting the messages isnt even necessary because they are displayed in order of id which is always chronological
-    d = {m.id: {'msg_id': m.id, 'msg': m.msg} for m in messages}
+    d = {m.id: {'msg_id': m.id, 'msg': m.msg, 'sent': m.userfrom == auth.user_id} for m in messages}
     return response.json(dict(message_dict=d))
 
 
@@ -224,6 +224,7 @@ def user():
     to decorate functions that need access control
     """
     return dict(form=auth())
+
 
 def debug_user():
     return dict()
