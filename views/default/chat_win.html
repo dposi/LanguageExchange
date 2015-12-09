@@ -4,27 +4,40 @@
 </body>
 
 <script id="template" type="text/ractive">
-<div id="message_header" class="headers"><h2>Messages:</h2></div>
+<div class="headers"><h2>Messages:</h2></div>
+<div style="float: left" class="user_btn">
+  {{=A('Home', _class='btn btn-default btn-md', _href=URL('default', 'home'))}}
+</div>
 <div id="img_select">
+<hr>
 <ul>
     {% #image_dict:name %}
-        <li>name</li>
+        <li style="text-align: left; margin: 5px;">
+        <div data-img="{% id %}" on-click="img_send">
+        <img width="100px" src="{% download_url %}/{% image %}" />
+        <div>
+        </li>
     {% /image_dict %}
 </ul>
 </div>
 <div id="message_bar">
-<textarea id="message_textarea" data-areaid="3" value="{% message_draft %}" rows="1" />
-<input class="btn btn-primary" id="message_send_btn" type="submit" value="Send an Image" on-click="show_images"/>
+<textarea id="message_textarea" value="{% message_draft %}" rows="1" />
 </div>
 <div id="message_list">
   {% #message_dict:msg_id %}
       {% #if sent %}
         <div class="sent_message">
             <p>{% msg %}</p>
+            {% #if img != null %}
+            <img width="100px" src="{% download_url %}/{% img.image %}" />
+            {% /if %}
         </div>
        {% else %}
         <div class="received_message">
             <p>{% msg %}</p>
+                {% #if img != null %}
+                <img width="100px" src="{% download_url %}/{% img.image %}" />
+                {% /if %}
         </div>
        {% /if %}
   {% /message_dict %}
@@ -45,6 +58,7 @@ $(function() {
       message_draft: "",
       recipient: "{{=messaging}}",
       image_dict: {},
+      download_url: '{{=URL('download')}}',
         loading: true
     }
   });
@@ -84,6 +98,7 @@ $(function() {
                 var message_dict = MAIN.get('message_dict');
                 message_dict[generateUUID()] = {
                     msg: message,
+                    img: null,
                     sent: true
                 };
                 MAIN.set('message_dict', message_dict);
@@ -95,6 +110,7 @@ $(function() {
             }
     );
   }
+
     function try_message() {
      var message = MAIN.get('message_draft');
      if ($.trim(message).length > 0) {
@@ -104,10 +120,35 @@ $(function() {
     return false;
    }
 
+  function send_image(img) {
+    $.ajax("{{=URL('default', 'add_img_message', user_signature=True)}}",
+
+            {
+              data: {
+                img: img,
+                recipient: parseInt(MAIN.get('recipient'))
+              },
+              method: 'POST',
+              success: function() {
+                load_messages();
+                  // from http://stackoverflow.com/questions/270612/scroll-to-bottom-of-div
+                $("#message_list").stop().animate({scrollTop: $("#message_list")[0].scrollHeight}, 500);
+              },
+              error: function(jqxhr, textStatus, errorThrown) {
+              }
+            }
+    );
+  }
+
   // This code is called when the send button is pressed
   MAIN.on("newmessage", function() {
       try_message();
   });
+
+    MAIN.on("img_send", function(e) {
+        var img = $(e.node).data("img");
+        send_image(img);
+    });
 
   function load_images() {
   $.ajax("{{=URL('default', 'load_images', user_signature=True)}}",
@@ -119,10 +160,6 @@ $(function() {
           }
   );}
   load_images();
-
-  MAIN.on("show_images", function() {
-      load_images();
-  });
 
       // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
   function generateUUID(){
@@ -143,9 +180,9 @@ $(function() {
           event.preventDefault();
           try_message();
       }
-  })
+  });
 
   setInterval(load_messages, 1000);
-
 });
+
 </script>

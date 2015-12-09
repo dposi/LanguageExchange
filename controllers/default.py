@@ -56,7 +56,7 @@ def load_messages():
         ((db.user_messages.userfrom == request.args(0))&(db.user_messages.userto == auth.user_id))
     ).select()
     #sorting the messages isnt even necessary because they are displayed in order of id which is always chronological
-    d = {m.id: {'msg_id': m.id, 'msg': m.msg, 'sent': m.userfrom == auth.user_id} for m in messages}
+    d = {m.id: {'msg_id': m.id, 'msg': m.msg, 'sent': m.userfrom == auth.user_id, 'img': db.images(m.img)} for m in messages}
     return response.json(dict(message_dict=d))
 
 
@@ -69,9 +69,16 @@ def add_message():
 
 @auth.requires_login()
 @auth.requires_signature()
+def add_img_message():
+    db.user_messages.insert(userfrom = auth.user_id, userto = request.vars.recipient, msg = None, img=db.images(request.vars.img))
+    return "ok"
+
+
+@auth.requires_login()
+@auth.requires_signature()
 def load_images():
     records = db(db.images.uploader == auth.user_id).select()
-    d = {r.name: {'name': r.name, 'image': r.image} for r in records}
+    d = {r.name: {'name': r.name, 'image': r.image, 'id': r.id} for r in records}
     return response.json(dict(images=d))
 
 #TODO: make it so you can't be fluent in AND learning the same language
@@ -246,6 +253,11 @@ def debug_user():
 def reset():
     db.user_messages.truncate()
     return "Reset messages"
+
+
+def reset_imgs():
+    db.images.truncate()
+    return "Reset images"
 
 
 def reset_all():
