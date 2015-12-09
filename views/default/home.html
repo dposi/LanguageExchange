@@ -7,7 +7,7 @@
 
 <div id="match_users">
     <h3>Matched Users:</h3>
-    <table align="center">
+    <table class="match_table" align="center">
         <!-- Title row for the table -->
         <tr id="match_col">
             <td>Name</td>
@@ -21,6 +21,7 @@
         <tr id="match_row">
             <td><a href="{{=URL('default', 'chat_win', args=[match_id], user_signature=True)}}">{{=match_name}}</a></td>
             <td>
+                <div id="match_list">
                 <ul> <!-- If there are more than 3 languages they know that you want to learn, list 3 then put the ... -->
                     {{if len(match_to) > 3:}}
                         <li>{{=match_to.pop(0)}}</li>
@@ -34,9 +35,11 @@
                         {{pass}}
                     {{pass}}
                 </ul>
+                </div>
             </td>
             <td>
                 <!-- Same thing -->
+                <div id="match_list">
                 <ul>
                     {{if len(match_from) > 3:}}
                         <li>{{=match_from.pop(0)}}</li>
@@ -49,6 +52,7 @@
                         {{pass}}
                     {{pass}}
                 </ul>
+                </div>
             </td>
         </tr>
         {{pass}}

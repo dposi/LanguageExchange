@@ -96,31 +96,51 @@ ul{
     text-align:left;
 }
 
+#match_list{
+    width:200px;
+    margin:0 auto;
+    text-align:left;
+}
+
 /* table customization */
-#match_user{
+
+table.match_table {
+    border-collapse: separate
+    border-spacing: 0;
+    border-radius: 20px;
+    padding: 20px;
+    width:60%;
 }
 
-table {
+.match_table td{
+    border-bottom: 10px solid #FBFEFD;
 }
 
-/* header row */
+.match_table td:nth-child(2) {
+    border-left: 3px solid #c2dba4;
+    border-right: 3px solid #c2dba4;
+}
+
+tr:first-child td:nth-child(2){
+    border-left: none;
+    border-right: none;
+}
+
 #match_col {
     font-size: 1.2em;
-    height:75px;
+    color:#FBFEFD;
+    height:45px;
     background-color:#88b851;
-    border: 1px solid black
+    border: none;
     margin-left: 10px;
     margin-right: 10px;
-    /*width:50%;
-    border-radius:100px 100px 100px 100px;*/
+    padding: 15px 20px;
 }
 
-/* row with matched user details */
 #match_row {
-    height:45px;
+    height:90px;
     background-color:#dae9c9;
 }
-
 
 
 /* form customization */
@@ -168,6 +188,7 @@ div.user_btn {
     color:#ffffff !important;
 }
 
+/* chat window */
 div.sent_message {
     background: rgba(205, 239, 186, 0.81);
     margin: 20px;
