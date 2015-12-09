@@ -9,19 +9,25 @@
   {{=A('Home', _class='btn btn-default btn-md', _href=URL('default', 'home'))}}
 </div>
 <div style="float: left" class="user_btn">
-
+{% #if imglist_visible %}
+    <input class="btn btn-primary" type="submit" value="Collapse Pictures" on-click="toggle_imglist"/>
+{% else %}
+    <input class="btn btn-primary" type="submit" value="Show Pictures" on-click="toggle_imglist"/>
+{% /if %}
 </div>
 <div id="img_select">
 <hr>
+<div id="img_toggle">
 <ul>
     {% #image_dict:name %}
         <li style="text-align: left; margin: 5px;">
         <div data-img="{% id %}" on-click="img_send">
         <img width="100px" src="{% download_url %}/{% image %}" />
-        <div>
+        </div>
         </li>
     {% /image_dict %}
 </ul>
+</div>
 </div>
 <div id="message_bar">
 <textarea id="message_textarea" value="{% message_draft %}" rows="1" />
@@ -62,6 +68,7 @@ $(function() {
       recipient: "{{=messaging}}",
       image_dict: {},
       download_url: '{{=URL('download')}}',
+        imglist_visible: false,
         loading: true
     }
   });
@@ -153,6 +160,11 @@ $(function() {
         send_image(img);
     });
 
+    $("div#img_toggle").hide();
+    MAIN.on("toggle_imglist", function(e) {
+        $("div#img_toggle").toggle();
+        MAIN.set('imglist_visible', !(MAIN.get('imglist_visible')));
+    });
   function load_images() {
   $.ajax("{{=URL('default', 'load_images', user_signature=True)}}",
           {
