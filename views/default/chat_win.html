@@ -8,6 +8,9 @@
 <div style="float: left" class="user_btn">
   {{=A('Home', _class='btn btn-default btn-md', _href=URL('default', 'home'))}}
 </div>
+<div style="float: left" class="user_btn">
+
+</div>
 <div id="img_select">
 <hr>
 <ul>
@@ -29,14 +32,14 @@
         <div class="sent_message">
             <p>{% msg %}</p>
             {% #if img != null %}
-            <img width="100px" src="{% download_url %}/{% img.image %}" />
+            <img width="300px" src="{% download_url %}/{% img.image %}" />
             {% /if %}
         </div>
        {% else %}
         <div class="received_message">
             <p>{% msg %}</p>
                 {% #if img != null %}
-                <img width="100px" src="{% download_url %}/{% img.image %}" />
+                <img width="300px" src="{% download_url %}/{% img.image %}" />
                 {% /if %}
         </div>
        {% /if %}
