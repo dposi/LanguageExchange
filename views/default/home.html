@@ -2,11 +2,10 @@
 <div class="headers">
    <h1>Matched Users</h1>
 </div>
-        <h3>Welcome, {{=auth.user.first_name}}!</h3>
+<h3>Welcome, {{=auth.user.first_name}}!</h3>
 <hr class="thin_line">
 
 <div id="match_users">
-    <h3>Matched Users:</h3>
     {{if len(matches) == 0 :}}
     <p> No matches found... :(</p>
     {{else:}}
@@ -14,7 +13,7 @@
         <!-- Title row for the table -->
         <tr id="match_col">
             <td>Name</td>
-            <td>Knows</td>
+            <td>Fluent In</td>
             <td>Wants to learn</td>
         </tr>
         <!-- Where the magic happens -->
