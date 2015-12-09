@@ -4,15 +4,14 @@ db.define_table('user_messages',
                 Field('userfrom', 'integer'),
                 Field('userto', 'integer'),
                 Field('msg'),
-                Field('msg_time', 'datetime', default = datetime.utcnow()),
-                Field('img', 'integer', default=None)
+                Field('msg_time', 'datetime', default = datetime.utcnow())
                 )
 
 db.define_table('images',
-                Field('name'),
+                Field('name', unique=True),
                 Field('image', 'upload'),
                 Field('uploader', 'integer', default = auth.user_id),
-                format = '%(uploader)s/%(name)s'
+                format = '%(title)s'
                 )
 
 db.user_messages.userfrom.readable = db.user_messages.userfrom.writable = False
