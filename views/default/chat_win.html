@@ -5,9 +5,16 @@
 
 <script id="template" type="text/ractive">
 <div id="message_header" class="headers"><h2>Messages:</h2></div>
+<div id="img_select">
+<ul>
+    {% #image_dict:name %}
+        <li>name</li>
+    {% /image_dict %}
+</ul>
+</div>
 <div id="message_bar">
 <textarea id="message_textarea" data-areaid="3" value="{% message_draft %}" rows="1" />
-<input class="btn btn-primary" id="message_send_btn" type="submit" value="Send" on-click="newmessage"/>
+<input class="btn btn-primary" id="message_send_btn" type="submit" value="Send an Image" on-click="show_images"/>
 </div>
 <div id="message_list">
   {% #message_dict:msg_id %}
@@ -37,6 +44,7 @@ $(function() {
       message_dict: {},
       message_draft: "",
       recipient: "{{=messaging}}",
+      image_dict: {},
         loading: true
     }
   });
@@ -99,6 +107,21 @@ $(function() {
   // This code is called when the send button is pressed
   MAIN.on("newmessage", function() {
       try_message();
+  });
+
+  function load_images() {
+  $.ajax("{{=URL('default', 'load_images', user_signature=True)}}",
+          {
+            method: 'POST',
+            success: function (data) {
+                MAIN.set('image_dict', data['images']);
+            }
+          }
+  );}
+  load_images();
+
+  MAIN.on("show_images", function() {
+      load_images();
   });
 
       // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript

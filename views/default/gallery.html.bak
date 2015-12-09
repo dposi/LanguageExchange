@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+<div class="headers">
+    <h2>Your Gallery:</h2>
+</div>
+<ul>
+{{for image in images:}}
+<li>
+    <img width="200px" src="{{=URL('download', args=image.image)}}" />
+    <p>{{=image.name}}</p>
+    </li>
+{{pass}}
+</ul>

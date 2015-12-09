@@ -8,6 +8,7 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
 
+
 def index():
     if auth.user_id is not None:
         redirect(URL('default', 'home'))
@@ -23,6 +24,9 @@ def descr():
 
 @auth.requires_login()
 def init_user():
+    """
+    Initializes a new user's account by creating the necessary records in db.languages
+    """
     auth.user = db.auth_user(auth.user_id)
     db.languages.insert(owner_id = auth.user_id, fluent = True)
     db.languages.insert(owner_id = auth.user_id, fluent = False)
@@ -35,17 +39,38 @@ def init_user():
     return dict()
 
 
-#TODO: should only select messages addressed to the current user
+@auth.requires_login()
+@auth.requires_signature()
 def load_messages():
-    messages = db(db.messages.id > 0).select()
-    d = {m.id: {'msg_id': m.id, 'msg': m.msg} for m in messages}
+    #old shitty way
+    """messages_to = db((db.user_messages.userfrom == auth.user_id)&(db.user_messages.userto == request.args(0))).select()
+    messages_from = db((db.user_messages.userfrom == request.args(0))&(db.user_messages.userto == auth.user_id)).select()
+    messages = messages_to | messages_from
+    message_list = messages.as_list()
+    message_list.sort(key=lambda message: message['msg_time'])
+    d = {m['id']: {'msg_id': m['id'], 'msg': m['msg']} for m in message_list}"""
+
+    #new beautiful way
+    messages = db(
+        ((db.user_messages.userfrom == auth.user_id)&(db.user_messages.userto == request.args(0))) |
+        ((db.user_messages.userfrom == request.args(0))&(db.user_messages.userto == auth.user_id))
+    ).select()
+    #sorting the messages isnt even necessary because they are displayed in order of id which is always chronological
+    d = {m.id: {'msg_id': m.id, 'msg': m.msg, 'sent': m.userfrom == auth.user_id} for m in messages}
     return response.json(dict(message_dict=d))
 
 
 @auth.requires_login()
+@auth.requires_signature()
 def add_message():
-    db.messages.insert(msg = request.vars.msg, userto = None, userfrom = db.auth_user(request.vars.authuserid))
+    db.user_messages.insert(userfrom = auth.user_id, userto = request.vars.recipient, msg = request.vars.msg)
     return "ok"
+
+
+def load_images():
+    records = db(db.images.uploader == auth.user_id).select()
+    d = {r.name: {'name': r.name, 'image': r.image} for r in records}
+    return response.json(dict(images=d))
 
 #TODO: make it so you can't be fluent in AND learning the same language
 @auth.requires_login()
@@ -55,14 +80,22 @@ def reg_lang():
     """
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
-        redirect(URL('default', 'init_user'))
+        redirect(URL('default', 'init_user', user_signature=True))
     record = db.auth_user(auth.user_id).fluent
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
-        if request.args(0) == 'settings':
-            redirect(URL('default', 'settings'))
+        #validates if form has at least one language checked
+        if form.vars.Arabic | form.vars.Chinese | form.vars.Danish | form.vars.English |form.vars.French | form.vars.German | form.vars.Italian | form.vars.Japanese:
+            #validates if user has chosen a language already learning
+            if (form.vars.Arabic & auth.user.learning.Arabic) | (form.vars.Chinese & auth.user.learning.Chinese) | (form.vars.Danish & auth.user.learning.Danish) | (form.vars.English & auth.user.learning.English) | (form.vars.French & auth.user.learning.French) | (form.vars.German & auth.user.learning.German) | (form.vars.Italian & auth.user.learning.Italian) | (form.vars.Japanese & auth.user.learning.Japanese):
+                response.flash = 'Cannot be fluent in language currently learning'
+            else:
+                if request.args(0) == 'settings':
+                    redirect(URL('default', 'user', args='profile'))
+                else:
+                    redirect(URL('default', 'reg_lang2'))
         else:
-            redirect(URL('default', 'reg_lang2'))
+            response.flash = 'Select a language to continue'
     return dict(form=form)
 
 
@@ -73,14 +106,23 @@ def reg_lang2():
     """
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
-        redirect(URL('default', 'init_user'))
+        redirect(URL('default', 'init_user', user_signature=True))
     record = db.auth_user(auth.user_id).learning
     form = SQLFORM(db.languages, record, formstyle='table3cols', showid=False)
     if form.process().accepted:
-        if request.args(0) == 'settings':
-            redirect(URL('default', 'settings'))
+        #validates if form has at least one language checked
+        if form.vars.Arabic | form.vars.Chinese | form.vars.Danish | form.vars.English |form.vars.French | form.vars.German | form.vars.Italian | form.vars.Japanese:
+            #validates if user has chosen a language already fluent in
+            if (form.vars.Arabic & auth.user.fluent.Arabic) | (form.vars.Chinese & auth.user.fluent.Chinese) | (form.vars.Danish & auth.user.fluent.Danish) | (form.vars.English & auth.user.fluent.English) | (form.vars.French & auth.user.fluent.French) | (form.vars.German & auth.user.fluent.German) | (form.vars.Italian & auth.user.fluent.Italian) | (form.vars.Japanese & auth.user.fluent.Japanese):
+                response.flash = 'Cannot learn language already fluent in'
+            else:
+                #redirect conditions
+                if request.args(0) == 'settings':
+                    redirect(URL('default', 'user', args='profile'))
+                else:
+                    redirect(URL('default', 'index'))
         else:
-            redirect(URL('default', 'index'))
+            response.flash = 'Select a language to continue'
     return dict(form=form)
 
 
@@ -94,7 +136,7 @@ def home():
 
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
-        redirect(URL('default', 'init_user'))
+        redirect(URL('default', 'init_user', user_signature=True))
     # TODO: stretch goal, create a dynamic query that finds language table records that are fluent in the languages you want to learn
     # until then enjoy iterating over the entire user table every time
     # TODO: delete that comment before submitting
@@ -155,24 +197,20 @@ def home():
                 match_from.append('Japanese')
                 match_flag = True
             if match_flag == True:
-                matches.append((record.screenname, match_to, match_from))
+                matches.append((record.screenname, match_to, match_from, record.id))
 
     return dict(matches=matches)
 
-
 @auth.requires_login()
-def settings():
-    """
-    where user can change settings
-    """
-    return dict()
-
-@auth.requires_login()
+@auth.requires_signature()
 def chat_win():
     """
     chat window
     """
-    return dict(authuserid = auth.user_id)
+    auth.user = db.auth_user(auth.user_id)
+    if auth.user.fluent is None or auth.user.learning is None:
+        redirect(URL('default', 'init_user', user_signature=True))
+    return dict(messaging=request.args(0))
 
 
 def user():
@@ -194,28 +232,33 @@ def user():
     return dict(form=auth())
 
 
-def cust_register():
-    """
-    customized registration
-    """
-    form = auth.register()
-    if form.accepts(request,session):
-        redirect(URL('reg_lang'))
-    else:
-        response.flash = 'Fill out details'
-    return dict(form=form)
-
+@auth.requires_login()
+def gallery():
+    records = db(db.images.uploader == auth.user_id).select()
+    return dict(images=records)
 
 def debug_user():
     return dict()
 
 
 def reset():
-    db(db.auth_user.id > 0).delete()
-    db(db.languages.id > 0).delete()
-    db(db.messages.id > 0).delete()
-    return dict()
+    db.user_messages.truncate()
+    return "Reset messages"
 
+
+def reset_all():
+    db.auth_user.truncate()
+    db.languages.truncate()
+    db.user_messages.truncate()
+    return "Reset all"
+
+
+@auth.requires_login()
+def upload():
+    form = SQLFORM(db.images)
+    if form.process().accepted:
+        redirect(URL('default', 'index'))
+    return dict(form=form)
 
 @cache.action()
 def download():

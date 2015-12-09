@@ -1,7 +1,219 @@
-div.signup {
+a, a:active {
+    color: #88b851;
+}
+
+a:hover {
+    color: #dbe9ca;
+}
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: #FBFEFD;
+    color:#5c7f34;
     text-align: center;
 }
 
-div.login {
+h1, h2 {
     text-align: center;
+    padding-top:1.25em;
+    color: #FFFFFF;
+    font-size:3em;
+    letter-spacing:6px;
+    word-spacing: 10px;
+}
+
+div.headers {
+    background-color:#88b851;
+    height:125px;
+    width:100%;
+    border-radius:100px 100px 100px 100px;
+}
+
+hr.thin_line{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #88b851, #ccc);
+}
+
+hr.drop_shadow{
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+div.logo_front {
+    margin-left:auto;
+    margin-right:auto;
+    height:400px;
+    width:500px;
+    background-color:#79bf4a;
+    border-radius:100px 100px 100px 100px;
+}
+
+#logo {
+    padding-top:1.55em;
+    height: auto;
+    width: auto;
+    max-width: 425px;
+    max-height: 425px;
+}
+
+#descr_link{
+    color:#88b851;
+    font-size:large;
+    margin:2em;
+}
+
+#descr_intro{
+    margin-left:100px;
+    margin-right:100px;
+    padding-bottom:1.55em;
+    text-align:justify;
+}
+
+#descr_pic{
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:1.55em;
+    width:50%;
+    height:50%;
+}
+
+#descr_more{
+    font-size:1.75em;
+}
+
+ul{
+    list-style-type: circle;
+}
+
+#descr_langlist{
+    width:200px;
+    margin:0 auto;
+    margin-bottom: 125px;
+    padding-top:0.25em;
+    text-align:left;
+}
+
+/* table customization */
+#match_user{
+}
+
+table {
+}
+
+/* header row */
+#match_col {
+    font-size: 1.2em;
+    height:75px;
+    background-color:#88b851;
+    border: 1px solid black
+    margin-left: 10px;
+    margin-right: 10px;
+    /*width:50%;
+    border-radius:100px 100px 100px 100px;*/
+}
+
+/* row with matched user details */
+#match_row {
+    height:45px;
+    background-color:#dae9c9;
+}
+
+
+
+/* form customization */
+
+div.language_form {
+    margin-left:6em;
+    font-size:125%;
+}
+
+div.container{
+    padding-top:2em;
+    padding-left:25%;
+    color:#5c7f34;
+}
+
+
+/* button customization */
+div.user_btn {
+    margin: 15px;
+}
+
+.btn{
+    border: 0 none;
+    font-weight: 350;
+    letter-spacing: 1px;
+    margin:10px 5px 0px;
+    padding: 15px 20px;
+    text-transform: uppercase;
+}
+
+.btn-default{
+    background: #618637;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.btn-default:hover{
+    background: #adce87;
+    color:#ffffff;
+}
+
+.btn-default:focus{
+    outline:0 !important;
+    background: #adce87 !important;
+    color:#ffffff !important;
+}
+
+div.sent_message {
+    background: rgba(205, 239, 186, 0.81);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: right;
+}
+
+div.received_message {
+    background: rgba(225, 225, 225, 0.81);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+textarea {
+    resize: none;
+}
+
+#message_bar {
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    width: 90%;
+    height: 100px;
+}
+
+div#message_header {
+    top: 0;
+}
+
+div#message_list {
+    position: fixed;
+    top: 250px;
+    bottom: 150px;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 30px;
+    overflow-y: auto;
+}
+
+#message_textarea {
+    width: 100%
+}
+
+#message_send_btn {
+    float: right
 }

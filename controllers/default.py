@@ -66,6 +66,14 @@ def add_message():
     db.user_messages.insert(userfrom = auth.user_id, userto = request.vars.recipient, msg = request.vars.msg)
     return "ok"
 
+
+@auth.requires_login()
+@auth.requires_signature()
+def load_images():
+    records = db(db.images.uploader == auth.user_id).select()
+    d = {r.name: {'name': r.name, 'image': r.image} for r in records}
+    return response.json(dict(images=d))
+
 #TODO: make it so you can't be fluent in AND learning the same language
 @auth.requires_login()
 def reg_lang():
@@ -226,6 +234,11 @@ def user():
     return dict(form=auth())
 
 
+@auth.requires_login()
+def gallery():
+    records = db(db.images.uploader == auth.user_id).select()
+    return dict(images=records)
+
 def debug_user():
     return dict()
 
@@ -240,6 +253,14 @@ def reset_all():
     db.languages.truncate()
     db.user_messages.truncate()
     return "Reset all"
+
+
+@auth.requires_login()
+def upload():
+    form = SQLFORM(db.images)
+    if form.process().accepted:
+        redirect(URL('default', 'index'))
+    return dict(form=form)
 
 @cache.action()
 def download():
