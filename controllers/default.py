@@ -268,10 +268,11 @@ def reset_all():
 
 
 @auth.requires_login()
+@auth.requires_signature()
 def upload():
     form = SQLFORM(db.images)
     if form.process().accepted:
-        redirect(URL('default', 'gallery'))
+        redirect(URL('default', 'chat_win', args=request.args(0), user_signature=True))
     return dict(form=form)
 
 @cache.action()
