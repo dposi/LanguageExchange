@@ -207,8 +207,12 @@ textarea {
     text-align: center;
     position: fixed;
     bottom: 0px;
-    width: 90%;
+    width: 96%;
     height: 80px;
+}
+
+#message_textarea {
+    width: 100%;
 }
 
 div#message_list {
@@ -221,10 +225,6 @@ div#message_list {
     overflow-y: auto;
 }
 
-#message_textarea {
-    width: 100%;
-}
-
 #message_send_btn {
     position: fixed;
     bottom: 100px;
@@ -235,7 +235,7 @@ div#img_select {
     float: left;
     position: fixed;
     top: 300px;
-    bottom: 200px;
+    bottom: 100px;
     width: 100%;
     padding-right: 80%;
     overflow-y: auto;

@@ -4,7 +4,7 @@
 </body>
 
 <script id="template" type="text/ractive">
-<div class="headers"><h2>Messages:</h2></div>
+<div class="headers"><h2>Messages with {{=name}}:</h2></div>
 <div style="float: left" class="user_btn">
   {{=A('Home', _class='btn btn-default btn-md', _href=URL('default', 'home'))}}
 </div>
@@ -16,8 +16,7 @@
 {% /if %}
 </div>
 <div id="img_select">
-<hr>
-<div id="img_toggle">
+<div id="img_scroll">
 <ul>
     {% #image_dict:name %}
         <li style="text-align: left; margin: 5px;">
@@ -26,6 +25,9 @@
         </div>
         </li>
     {% /image_dict %}
+    <li style="text-align: left; margin: 5px;">
+        <a target="_blank" href="{{=URL('default', 'upload')}}" style="text-align: left;">upload an image</a>
+    </li>
 </ul>
 </div>
 </div>
@@ -160,9 +162,9 @@ $(function() {
         send_image(img);
     });
 
-    $("div#img_toggle").hide();
+    $("div#img_scroll").hide();
     MAIN.on("toggle_imglist", function(e) {
-        $("div#img_toggle").toggle();
+        $("div#img_scroll").toggle();
         MAIN.set('imglist_visible', !(MAIN.get('imglist_visible')));
     });
   function load_images() {

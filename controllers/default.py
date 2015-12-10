@@ -219,7 +219,7 @@ def chat_win():
     auth.user = db.auth_user(auth.user_id)
     if auth.user.fluent is None or auth.user.learning is None:
         redirect(URL('default', 'init_user', user_signature=True))
-    return dict(messaging=request.args(0))
+    return dict(messaging=request.args(0), name=db.auth_user(request.args(0)).screenname)
 
 
 def user():
@@ -271,7 +271,7 @@ def reset_all():
 def upload():
     form = SQLFORM(db.images)
     if form.process().accepted:
-        redirect(URL('default', 'index'))
+        redirect(URL('default', 'gallery'))
     return dict(form=form)
 
 @cache.action()
