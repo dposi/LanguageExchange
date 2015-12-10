@@ -3,7 +3,7 @@ a, a:active {
 }
 
 a:hover {
-    color: #dbe9ca;
+    color: #e6f1da;
 }
 
 body {
@@ -80,6 +80,11 @@ div.logo_front {
     font-size:1.75em;
 }
 
+#lang_link{
+    text-align:left;
+    margin-left:10.5em;
+}
+
 ul{
     list-style-type: circle;
 }
@@ -117,7 +122,7 @@ table.match_table {
     border-right: 3px solid #c2dba4;
 }
 
-tr:first-child td:nth-child(2){
+.match_table tr:first-child td:nth-child(2){
     border-left: none;
     border-right: none;
     text-indent:-3em;
@@ -150,17 +155,16 @@ div.container{
     color:#5c7f34;
 }
 
-
 /* button customization */
 div.user_btn {
-    margin: 15px;
+    margin: 10px 0px 0px 35px;
 }
 
 .btn{
     border: 0 none;
     font-weight: 350;
     letter-spacing: 1px;
-    margin:10px 5px 0px;
+    margin: 10px 25px 0px -20px;
     padding: 15px 20px;
     text-transform: uppercase;
 }
